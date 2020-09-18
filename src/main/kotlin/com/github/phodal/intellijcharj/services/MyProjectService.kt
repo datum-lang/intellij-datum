@@ -1,7 +1,7 @@
 package com.github.phodal.intellijcharj.services
 
-import com.intellij.openapi.project.Project
 import com.github.phodal.intellijcharj.MyBundle
+import com.intellij.openapi.project.Project
 
 class MyProjectService(project: Project) {
 
