@@ -1,0 +1,18 @@
+{
+  parserClass="com.phodal.charj.parser.CharjParser"
+  parserUtilClass="com.phodal.charj.parser.CharjParserUtil"
+
+  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+  psiClassPrefix="Charj"
+  psiImplClassSuffix="Impl"
+  
+  psiImplPackage="com.phodal.charj.psi.impl"
+
+  elementTypeHolderClass="com.phodal.charj.psi.CharjTypes"
+  elementTypeClass="com.phodal.charj.psi.CharjElementType"
+  tokenTypeClass="com.phodal.charj.psi.CharjTokenType"
+
+  psiImplUtilClass="com.phodal.charj.psi.impl.CharjPsiImplUtil"
+}
+
