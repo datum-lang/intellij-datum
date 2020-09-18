@@ -10,6 +10,12 @@
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="com.github.phodal.charj.services.MyApplicationService"/>
         <projectService serviceImplementation="com.github.phodal.charj.services.MyProjectService"/>
+
+
+        <fileType name="Charj File" implementationClass="com.phodal.charj.CharjFileType" fieldName="INSTANCE"
+                  language="Charj" extensions="cj"/>
+
+        <lang.parserDefinition language="Charj" implementationClass="com.phodal.charj.CharjParserDefinition"/>
     </extensions>
 
     <projectListeners>
