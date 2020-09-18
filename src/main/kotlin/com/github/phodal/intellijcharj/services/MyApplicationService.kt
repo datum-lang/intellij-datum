@@ -1,6 +1,6 @@
-package org.jetbrains.plugins.template.services
+package com.github.phodal.intellijcharj.services
 
-import org.jetbrains.plugins.template.MyBundle
+import com.github.phodal.intellijcharj.MyBundle
 
 class MyApplicationService {
 

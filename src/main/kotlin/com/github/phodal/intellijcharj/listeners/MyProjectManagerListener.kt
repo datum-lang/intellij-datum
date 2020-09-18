@@ -1,8 +1,8 @@
-package org.jetbrains.plugins.template.listeners
+package com.github.phodal.intellijcharj.listeners
 
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.project.ProjectManagerListener
-import org.jetbrains.plugins.template.services.MyProjectService
+import com.github.phodal.intellijcharj.services.MyProjectService
 
 internal class MyProjectManagerListener : ProjectManagerListener {
 
