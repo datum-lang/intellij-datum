@@ -1,18 +1,35 @@
 {
   parserClass="com.phodal.charj.parser.CharjParser"
-  parserUtilClass="com.phodal.charj.parser.CharjParserUtil"
+  parserUtilClass="com.intellij.lang.parser.GeneratedParserUtilBase"
+  psiImplUtilClass="com.phodal.charj.psi.impl.CharjPsiImplUtil"
 
-  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+  implements="com.phodal.charj.psi.CharjPsiCompositeElement"
+  extends="com.phodal.charj.psi.impl.CharjPsiCompositeElementImpl"
 
   psiClassPrefix="Charj"
   psiImplClassSuffix="Impl"
-  
+  psiPackage="com.phodal.charj.psi"
   psiImplPackage="com.phodal.charj.psi.impl"
 
-  elementTypeHolderClass="com.phodal.charj.psi.CharjTypes"
-  elementTypeClass="com.phodal.charj.psi.CharjElementType"
-  tokenTypeClass="com.phodal.charj.psi.CharjTokenType"
 
-  psiImplUtilClass="com.phodal.charj.psi.impl.CharjPsiImplUtil"
+  elementTypeHolderClass="com.phodal.charj.lexer.CharjTypes"
+  elementTypeClass="com.phodal.charj.psi.CharjElementType"
+  tokenTypeClass="com.phodal.charj.lexer.CharjTokenType"
+
+  tokenTypeClass="com.phodal.charj.lexer.CharjTokenType"
+  tokens = [
+      IMPORT_KEYWORD='import'
+      PACKAGE_KEYWORD='pkg'
+      BODY_KEYWORD='body'
+  ]
 }
 
+compilationUnit ::= headers body { pin = 1}
+
+headers ::= packageDeclaration* importDeclaration*
+
+packageDeclaration ::= PACKAGE_KEYWORD
+
+importDeclaration ::= IMPORT_KEYWORD
+
+body ::= BODY_KEYWORD
