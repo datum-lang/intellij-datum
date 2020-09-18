@@ -1,6 +1,6 @@
-package com.github.phodal.intellijcharj.listeners
+package com.github.phodal.charj.listeners
 
-import com.github.phodal.intellijcharj.services.MyProjectService
+import com.github.phodal.charj.services.MyProjectService
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.project.ProjectManagerListener
 

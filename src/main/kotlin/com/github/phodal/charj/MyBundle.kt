@@ -1,4 +1,4 @@
-package com.github.phodal.intellijcharj
+package com.github.phodal.charj
 
 import com.intellij.AbstractBundle
 import org.jetbrains.annotations.NonNls

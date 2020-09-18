@@ -1,6 +1,6 @@
-package com.github.phodal.intellijcharj.services
+package com.github.phodal.charj.services
 
-import com.github.phodal.intellijcharj.MyBundle
+import com.github.phodal.charj.MyBundle
 
 class MyApplicationService {
 

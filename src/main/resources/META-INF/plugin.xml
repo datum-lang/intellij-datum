@@ -1,5 +1,5 @@
 <idea-plugin>
-    <id>com.github.phodal.intellijcharj</id>
+    <id>com.github.phodal.charj</id>
     <name>intellij-charj</name>
     <vendor>phodal</vendor>
 
@@ -8,12 +8,12 @@
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.phodal.intellijcharj.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.phodal.intellijcharj.services.MyProjectService"/>
+        <applicationService serviceImplementation="com.github.phodal.charj.services.MyApplicationService"/>
+        <projectService serviceImplementation="com.github.phodal.charj.services.MyProjectService"/>
     </extensions>
 
     <projectListeners>
-        <listener class="com.github.phodal.intellijcharj.listeners.MyProjectManagerListener"
+        <listener class="com.github.phodal.charj.listeners.MyProjectManagerListener"
                   topic="com.intellij.openapi.project.ProjectManagerListener"/>
     </projectListeners>
 </idea-plugin>
