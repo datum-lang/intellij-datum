@@ -96,6 +96,18 @@ public class CharjParser implements PsiParser, LightPsiParser {
 
   /* ********************************************************** */
   // name_component
+  public static boolean functionDefineName(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "functionDefineName")) return false;
+    if (!nextTokenIs(b, IDENTIFIER)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = name_component(b, l + 1);
+    exit_section_(b, m, FUNCTION_DEFINE_NAME, r);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // name_component
   public static boolean functionName(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "functionName")) return false;
     if (!nextTokenIs(b, IDENTIFIER)) return false;
@@ -274,7 +286,7 @@ public class CharjParser implements PsiParser, LightPsiParser {
 
   /* ********************************************************** */
   // DEF_KEYWORD? STRUCT_KEYWORD structNameDeclaration OPEN_BRACE memberDeclaration* CLOSE_BRACE
-  //    | structNameDeclaration DOLLAR functionName OPEN_BRACE memberDeclaration* CLOSE_BRACE
+  //    | structNameDeclaration DOLLAR functionDefineName OPEN_BRACE memberDeclaration* CLOSE_BRACE
   public static boolean structDeclaration(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "structDeclaration")) return false;
     boolean r;
@@ -318,14 +330,14 @@ public class CharjParser implements PsiParser, LightPsiParser {
     return true;
   }
 
-  // structNameDeclaration DOLLAR functionName OPEN_BRACE memberDeclaration* CLOSE_BRACE
+  // structNameDeclaration DOLLAR functionDefineName OPEN_BRACE memberDeclaration* CLOSE_BRACE
   private static boolean structDeclaration_1(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "structDeclaration_1")) return false;
     boolean r;
     Marker m = enter_section_(b);
     r = structNameDeclaration(b, l + 1);
     r = r && consumeToken(b, DOLLAR);
-    r = r && functionName(b, l + 1);
+    r = r && functionDefineName(b, l + 1);
     r = r && consumeToken(b, OPEN_BRACE);
     r = r && structDeclaration_1_4(b, l + 1);
     r = r && consumeToken(b, CLOSE_BRACE);

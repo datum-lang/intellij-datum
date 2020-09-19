@@ -44,7 +44,7 @@ IDENTIFIER=[_a-zA-Z][_a-zA-Z0-9]*
   "string"             { return STRING_KEYWORD; }
   ":"                  { return COLON; }
   "::"                 { return DOUBLE_COLON; }
-  ","                  { return SEMICOLON; }
+  ";"                  { return SEMICOLON; }
   "/"                  { return SLASH; }
   "{"                  { return OPEN_BRACE; }
   "}"                  { return CLOSE_BRACE; }

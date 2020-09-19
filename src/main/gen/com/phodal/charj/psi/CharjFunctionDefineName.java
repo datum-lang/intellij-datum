@@ -4,13 +4,10 @@ package com.phodal.charj.psi;
 import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiReference;
 
-public interface CharjNameComponent extends CharjNamedElement {
+public interface CharjFunctionDefineName extends CharjPsiCompositeElement {
 
   @NotNull
-  PsiElement getIdentifier();
-
-  PsiReference getReference();
+  CharjNameComponent getNameComponent();
 
 }

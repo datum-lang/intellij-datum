@@ -9,6 +9,8 @@ import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import static com.phodal.charj.lexer.CharjTypes.*;
 import com.phodal.charj.psi.*;
+import com.phodal.charj.parser.CharjPsiImplUtil;
+import com.intellij.psi.PsiReference;
 
 public class CharjNameComponentImpl extends CharjNamedElementImpl implements CharjNameComponent {
 
@@ -29,6 +31,11 @@ public class CharjNameComponentImpl extends CharjNamedElementImpl implements Cha
   @NotNull
   public PsiElement getIdentifier() {
     return findNotNullChildByType(IDENTIFIER);
+  }
+
+  @Override
+  public PsiReference getReference() {
+    return CharjPsiImplUtil.getReference(this);
   }
 
 }

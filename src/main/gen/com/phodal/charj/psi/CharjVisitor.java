@@ -14,6 +14,10 @@ public class CharjVisitor extends PsiElementVisitor {
     visitPsiCompositeElement(o);
   }
 
+  public void visitFunctionDefineName(@NotNull CharjFunctionDefineName o) {
+    visitPsiCompositeElement(o);
+  }
+
   public void visitFunctionName(@NotNull CharjFunctionName o) {
     visitPsiCompositeElement(o);
   }

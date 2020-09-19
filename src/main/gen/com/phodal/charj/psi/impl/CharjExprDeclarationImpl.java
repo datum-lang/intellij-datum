@@ -9,6 +9,7 @@ import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import static com.phodal.charj.lexer.CharjTypes.*;
 import com.phodal.charj.psi.*;
+import com.phodal.charj.parser.CharjPsiImplUtil;
 
 public class CharjExprDeclarationImpl extends CharjPsiCompositeElementImpl implements CharjExprDeclaration {
 

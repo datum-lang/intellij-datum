@@ -11,14 +11,14 @@ import static com.phodal.charj.lexer.CharjTypes.*;
 import com.phodal.charj.psi.*;
 import com.phodal.charj.parser.CharjPsiImplUtil;
 
-public class CharjImportDeclarationImpl extends CharjPsiCompositeElementImpl implements CharjImportDeclaration {
+public class CharjFunctionDefineNameImpl extends CharjPsiCompositeElementImpl implements CharjFunctionDefineName {
 
-  public CharjImportDeclarationImpl(@NotNull ASTNode node) {
+  public CharjFunctionDefineNameImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull CharjVisitor visitor) {
-    visitor.visitImportDeclaration(this);
+    visitor.visitFunctionDefineName(this);
   }
 
   public void accept(@NotNull PsiElementVisitor visitor) {
@@ -28,8 +28,8 @@ public class CharjImportDeclarationImpl extends CharjPsiCompositeElementImpl imp
 
   @Override
   @NotNull
-  public CharjImport getImport() {
-    return findNotNullChildByClass(CharjImport.class);
+  public CharjNameComponent getNameComponent() {
+    return findNotNullChildByClass(CharjNameComponent.class);
   }
 
 }

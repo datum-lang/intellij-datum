@@ -1,7 +1,7 @@
 {
   parserClass="com.phodal.charj.parser.CharjParser"
   parserUtilClass="com.intellij.lang.parser.GeneratedParserUtilBase"
-  psiImplUtilClass="com.phodal.charj.psi.impl.CharjPsiImplUtil"
+  psiImplUtilClass="com.phodal.charj.parser.CharjPsiImplUtil"
 
   implements="com.phodal.charj.psi.CharjPsiCompositeElement"
   extends="com.phodal.charj.psi.impl.CharjPsiCompositeElementImpl"
@@ -38,7 +38,6 @@
       SLASH="/"
       OPEN_BRACE="{"
       CLOSE_BRACE="}"
-      SEMICOLON=","
       COMMA=","
       DOLLAR="$"
   ]
@@ -58,7 +57,7 @@ import ::= qualified_name
 
 structDeclaration ::=
    DEF_KEYWORD? STRUCT_KEYWORD structNameDeclaration OPEN_BRACE memberDeclaration* CLOSE_BRACE
-   | structNameDeclaration DOLLAR functionName OPEN_BRACE memberDeclaration* CLOSE_BRACE
+   | structNameDeclaration DOLLAR functionDefineName OPEN_BRACE memberDeclaration* CLOSE_BRACE
 
 memberDeclaration ::=
    DEF_KEYWORD? MEMBER_PLACEHOLDER structNameDeclaration COLON primitive_type
@@ -74,6 +73,7 @@ exprDeclaration ::=
 
 variableDeclaration ::= name_component
 functionName ::= name_component
+functionDefineName ::= name_component
 structNameDeclaration ::= name_component
 
 package_name ::= qualified_name { name = 'package name' }

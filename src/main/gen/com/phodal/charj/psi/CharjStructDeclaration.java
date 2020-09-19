@@ -8,7 +8,7 @@ import com.intellij.psi.PsiElement;
 public interface CharjStructDeclaration extends CharjPsiCompositeElement {
 
   @Nullable
-  CharjFunctionName getFunctionName();
+  CharjFunctionDefineName getFunctionDefineName();
 
   @NotNull
   List<CharjMemberDeclaration> getMemberDeclarationList();

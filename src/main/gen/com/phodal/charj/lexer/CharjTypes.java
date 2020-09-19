@@ -11,6 +11,7 @@ public interface CharjTypes {
 
   IElementType BODY = new CharjElementType("BODY");
   IElementType EXPR_DECLARATION = new CharjElementType("EXPR_DECLARATION");
+  IElementType FUNCTION_DEFINE_NAME = new CharjElementType("FUNCTION_DEFINE_NAME");
   IElementType FUNCTION_NAME = new CharjElementType("FUNCTION_NAME");
   IElementType HEADERS = new CharjElementType("HEADERS");
   IElementType IMPORT = new CharjElementType("IMPORT");
@@ -54,6 +55,9 @@ public interface CharjTypes {
       }
       else if (type == EXPR_DECLARATION) {
         return new CharjExprDeclarationImpl(node);
+      }
+      else if (type == FUNCTION_DEFINE_NAME) {
+        return new CharjFunctionDefineNameImpl(node);
       }
       else if (type == FUNCTION_NAME) {
         return new CharjFunctionNameImpl(node);

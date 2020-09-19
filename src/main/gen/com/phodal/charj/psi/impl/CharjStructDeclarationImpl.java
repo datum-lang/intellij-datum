@@ -9,6 +9,7 @@ import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import static com.phodal.charj.lexer.CharjTypes.*;
 import com.phodal.charj.psi.*;
+import com.phodal.charj.parser.CharjPsiImplUtil;
 
 public class CharjStructDeclarationImpl extends CharjPsiCompositeElementImpl implements CharjStructDeclaration {
 
@@ -27,8 +28,8 @@ public class CharjStructDeclarationImpl extends CharjPsiCompositeElementImpl imp
 
   @Override
   @Nullable
-  public CharjFunctionName getFunctionName() {
-    return findChildByClass(CharjFunctionName.class);
+  public CharjFunctionDefineName getFunctionDefineName() {
+    return findChildByClass(CharjFunctionDefineName.class);
   }
 
   @Override
