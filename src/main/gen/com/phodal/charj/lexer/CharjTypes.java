@@ -39,8 +39,10 @@ public interface CharjTypes {
   IElementType IDENTIFIER = new CharjTokenType("IDENTIFIER");
   IElementType IMPORT_KEYWORD = new CharjTokenType("import");
   IElementType INT_KEYWORD = new CharjTokenType("int");
+  IElementType IN_KEYWORD = new CharjTokenType("in");
   IElementType MEMBER_PLACEHOLDER = new CharjTokenType("member");
   IElementType OPEN_BRACE = new CharjTokenType("{");
+  IElementType OUT_KEYWORD = new CharjTokenType("out");
   IElementType PACKAGE_KEYWORD = new CharjTokenType("pkg");
   IElementType SEMICOLON = new CharjTokenType(";");
   IElementType SLASH = new CharjTokenType("/");

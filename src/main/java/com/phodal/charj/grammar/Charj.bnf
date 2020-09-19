@@ -17,29 +17,34 @@
 
   tokenTypeClass="com.phodal.charj.lexer.CharjTokenType"
   tokens = [
-      COMMENT='regexp://[^\r\n]*'
-      BLOCK_COMMENT='regexp:[/][*][^*]*[*]+([^/*][^*]*[*]+)*[/]'
-
-      IMPORT_KEYWORD='import'
-      PACKAGE_KEYWORD='pkg'
-      BODY_KEYWORD='body'
-      STRUCT_KEYWORD='struct'
-      DEF_KEYWORD="def"
       MEMBER_PLACEHOLDER="member"
-      IDENTIFIER='regexp:[_a-zA-Z][_a-zA-Z0-9]*'
 
-      INT_KEYWORD='int'
-      FLOAT_KEYWORD='float'
-      STRING_KEYWORD='string'
+      COMMENT        = 'regexp://[^\r\n]*'
+      BLOCK_COMMENT  = 'regexp:[/][*][^*]*[*]+([^/*][^*]*[*]+)*[/]'
 
-      COLON=":"
-      DOUBLE_COLON="::"
-      SEMICOLON=";"
-      SLASH="/"
-      OPEN_BRACE="{"
-      CLOSE_BRACE="}"
-      COMMA=","
-      DOLLAR="$"
+      IMPORT_KEYWORD = 'import'
+      PACKAGE_KEYWORD='pkg'
+      BODY_KEYWORD   = 'body'
+      STRUCT_KEYWORD = 'struct'
+      DEF_KEYWORD    = "def"
+      IDENTIFIER     = 'regexp:[_a-zA-Z][_a-zA-Z0-9]*'
+
+      INT_KEYWORD    = 'int'
+      FLOAT_KEYWORD  ='float'
+      STRING_KEYWORD ='string'
+      IN_KEYWORD     ='in'
+      OUT_KEYWORD    ='out'
+
+      COLON          = ":"
+      DOUBLE_COLON   = "::"
+      SEMICOLON      = ";"
+      SLASH          = "/"
+      OPEN_BRACE     = "{"
+      CLOSE_BRACE    = "}"
+      COMMA          = ","
+      EQUAL          = "="
+      DOLLAR         = "$"
+      QUOTA          = "'"
   ]
 }
 
@@ -61,15 +66,16 @@ structDeclaration ::=
 
 memberDeclaration ::=
    DEF_KEYWORD? MEMBER_PLACEHOLDER structNameDeclaration COLON primitive_type
- | exprDeclaration
+  | exprDeclaration
 
 primitive_type ::=
       INT_KEYWORD
-    | FLOAT_KEYWORD
-    | STRING_KEYWORD
+  | FLOAT_KEYWORD
+  | STRING_KEYWORD
 
 exprDeclaration ::=
     functionName variableDeclaration COMMA variableDeclaration
+  | primitive_type variableDeclaration EQUAL
 
 variableDeclaration ::= name_component
 functionName ::= name_component

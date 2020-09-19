@@ -42,6 +42,8 @@ IDENTIFIER=[_a-zA-Z][_a-zA-Z0-9]*
   "int"                { return INT_KEYWORD; }
   "float"              { return FLOAT_KEYWORD; }
   "string"             { return STRING_KEYWORD; }
+  "in"                 { return IN_KEYWORD; }
+  "out"                { return OUT_KEYWORD; }
   ":"                  { return COLON; }
   "::"                 { return DOUBLE_COLON; }
   ";"                  { return SEMICOLON; }
