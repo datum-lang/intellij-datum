@@ -1,5 +1,5 @@
 <idea-plugin>
-    <id>com.github.phodal.charj</id>
+    <id>com.phodal.charj</id>
     <name>Charj</name>
     <vendor>phodal</vendor>
 

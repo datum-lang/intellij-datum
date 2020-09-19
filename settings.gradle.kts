@@ -1,1 +1,1 @@
-rootProject.name = "Intellij Charj Lang"
+rootProject.name = "Charj"
