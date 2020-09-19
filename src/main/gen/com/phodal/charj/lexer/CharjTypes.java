@@ -31,6 +31,8 @@ public interface CharjTypes {
   IElementType COLON = new CharjTokenType(":");
   IElementType COMMA = new CharjTokenType(",");
   IElementType COMMENT = new CharjTokenType("COMMENT");
+  IElementType DEF_KEYWORD = new CharjTokenType("def");
+  IElementType DOLLAR = new CharjTokenType("$");
   IElementType DOUBLE_COLON = new CharjTokenType("::");
   IElementType FLOAT_KEYWORD = new CharjTokenType("float");
   IElementType IDENTIFIER = new CharjTokenType("IDENTIFIER");

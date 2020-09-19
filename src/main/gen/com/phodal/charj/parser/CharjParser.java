@@ -152,11 +152,10 @@ public class CharjParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // MEMBER_PLACEHOLDER structNameDeclaration COLON primitive_type
+  // DEF_KEYWORD? MEMBER_PLACEHOLDER structNameDeclaration COLON primitive_type
   //  | exprDeclaration
   public static boolean memberDeclaration(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "memberDeclaration")) return false;
-    if (!nextTokenIs(b, "<member declaration>", IDENTIFIER, MEMBER_PLACEHOLDER)) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, MEMBER_DECLARATION, "<member declaration>");
     r = memberDeclaration_0(b, l + 1);
@@ -165,17 +164,25 @@ public class CharjParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // MEMBER_PLACEHOLDER structNameDeclaration COLON primitive_type
+  // DEF_KEYWORD? MEMBER_PLACEHOLDER structNameDeclaration COLON primitive_type
   private static boolean memberDeclaration_0(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "memberDeclaration_0")) return false;
     boolean r;
     Marker m = enter_section_(b);
-    r = consumeToken(b, MEMBER_PLACEHOLDER);
+    r = memberDeclaration_0_0(b, l + 1);
+    r = r && consumeToken(b, MEMBER_PLACEHOLDER);
     r = r && structNameDeclaration(b, l + 1);
     r = r && consumeToken(b, COLON);
     r = r && primitive_type(b, l + 1);
     exit_section_(b, m, null, r);
     return r;
+  }
+
+  // DEF_KEYWORD?
+  private static boolean memberDeclaration_0_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "memberDeclaration_0_0")) return false;
+    consumeToken(b, DEF_KEYWORD);
+    return true;
   }
 
   /* ********************************************************** */
@@ -266,28 +273,73 @@ public class CharjParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // STRUCT_KEYWORD qualified_name OPEN_BRACE memberDeclaration* CLOSE_BRACE
+  // DEF_KEYWORD? STRUCT_KEYWORD structNameDeclaration OPEN_BRACE memberDeclaration* CLOSE_BRACE
+  //    | structNameDeclaration DOLLAR functionName OPEN_BRACE memberDeclaration* CLOSE_BRACE
   public static boolean structDeclaration(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "structDeclaration")) return false;
-    if (!nextTokenIs(b, STRUCT_KEYWORD)) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, STRUCT_DECLARATION, "<struct declaration>");
+    r = structDeclaration_0(b, l + 1);
+    if (!r) r = structDeclaration_1(b, l + 1);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  // DEF_KEYWORD? STRUCT_KEYWORD structNameDeclaration OPEN_BRACE memberDeclaration* CLOSE_BRACE
+  private static boolean structDeclaration_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "structDeclaration_0")) return false;
     boolean r;
     Marker m = enter_section_(b);
-    r = consumeToken(b, STRUCT_KEYWORD);
-    r = r && qualified_name(b, l + 1);
+    r = structDeclaration_0_0(b, l + 1);
+    r = r && consumeToken(b, STRUCT_KEYWORD);
+    r = r && structNameDeclaration(b, l + 1);
     r = r && consumeToken(b, OPEN_BRACE);
-    r = r && structDeclaration_3(b, l + 1);
+    r = r && structDeclaration_0_4(b, l + 1);
     r = r && consumeToken(b, CLOSE_BRACE);
-    exit_section_(b, m, STRUCT_DECLARATION, r);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  // DEF_KEYWORD?
+  private static boolean structDeclaration_0_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "structDeclaration_0_0")) return false;
+    consumeToken(b, DEF_KEYWORD);
+    return true;
+  }
+
+  // memberDeclaration*
+  private static boolean structDeclaration_0_4(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "structDeclaration_0_4")) return false;
+    while (true) {
+      int c = current_position_(b);
+      if (!memberDeclaration(b, l + 1)) break;
+      if (!empty_element_parsed_guard_(b, "structDeclaration_0_4", c)) break;
+    }
+    return true;
+  }
+
+  // structNameDeclaration DOLLAR functionName OPEN_BRACE memberDeclaration* CLOSE_BRACE
+  private static boolean structDeclaration_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "structDeclaration_1")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = structNameDeclaration(b, l + 1);
+    r = r && consumeToken(b, DOLLAR);
+    r = r && functionName(b, l + 1);
+    r = r && consumeToken(b, OPEN_BRACE);
+    r = r && structDeclaration_1_4(b, l + 1);
+    r = r && consumeToken(b, CLOSE_BRACE);
+    exit_section_(b, m, null, r);
     return r;
   }
 
   // memberDeclaration*
-  private static boolean structDeclaration_3(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "structDeclaration_3")) return false;
+  private static boolean structDeclaration_1_4(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "structDeclaration_1_4")) return false;
     while (true) {
       int c = current_position_(b);
       if (!memberDeclaration(b, l + 1)) break;
-      if (!empty_element_parsed_guard_(b, "structDeclaration_3", c)) break;
+      if (!empty_element_parsed_guard_(b, "structDeclaration_1_4", c)) break;
     }
     return true;
   }

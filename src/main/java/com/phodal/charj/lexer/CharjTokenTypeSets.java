@@ -5,6 +5,7 @@ import com.intellij.psi.tree.TokenSet;
 public interface CharjTokenTypeSets {
     TokenSet KEY_WORDS = TokenSet
             .create(
+                    CharjTypes.DEF_KEYWORD,
                     CharjTypes.BODY_KEYWORD,
                     CharjTypes.IMPORT_KEYWORD,
                     CharjTypes.PACKAGE_KEYWORD,

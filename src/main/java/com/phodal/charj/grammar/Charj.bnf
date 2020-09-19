@@ -24,6 +24,8 @@
       PACKAGE_KEYWORD='pkg'
       BODY_KEYWORD='body'
       STRUCT_KEYWORD='struct'
+      DEF_KEYWORD="def"
+      MEMBER_PLACEHOLDER="member"
       IDENTIFIER='regexp:[_a-zA-Z][_a-zA-Z0-9]*'
 
       INT_KEYWORD='int'
@@ -38,7 +40,7 @@
       CLOSE_BRACE="}"
       SEMICOLON=","
       COMMA=","
-      MEMBER_PLACEHOLDER="member"
+      DOLLAR="$"
   ]
 }
 
@@ -54,10 +56,12 @@ body ::= structDeclaration* memberDeclaration?
 
 import ::= qualified_name
 
-structDeclaration ::= STRUCT_KEYWORD qualified_name OPEN_BRACE memberDeclaration* CLOSE_BRACE
+structDeclaration ::=
+   DEF_KEYWORD? STRUCT_KEYWORD structNameDeclaration OPEN_BRACE memberDeclaration* CLOSE_BRACE
+   | structNameDeclaration DOLLAR functionName OPEN_BRACE memberDeclaration* CLOSE_BRACE
 
 memberDeclaration ::=
-   MEMBER_PLACEHOLDER structNameDeclaration COLON primitive_type
+   DEF_KEYWORD? MEMBER_PLACEHOLDER structNameDeclaration COLON primitive_type
  | exprDeclaration
 
 primitive_type ::=

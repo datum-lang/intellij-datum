@@ -37,6 +37,8 @@ IDENTIFIER=[_a-zA-Z][_a-zA-Z0-9]*
   "pkg"                { return PACKAGE_KEYWORD; }
   "body"               { return BODY_KEYWORD; }
   "struct"             { return STRUCT_KEYWORD; }
+  "def"                { return DEF_KEYWORD; }
+  "member"             { return MEMBER_PLACEHOLDER; }
   "int"                { return INT_KEYWORD; }
   "float"              { return FLOAT_KEYWORD; }
   "string"             { return STRING_KEYWORD; }
@@ -47,7 +49,7 @@ IDENTIFIER=[_a-zA-Z][_a-zA-Z0-9]*
   "{"                  { return OPEN_BRACE; }
   "}"                  { return CLOSE_BRACE; }
   ","                  { return COMMA; }
-  "member"             { return MEMBER_PLACEHOLDER; }
+  "$"                  { return DOLLAR; }
 
   {COMMENT}            { return COMMENT; }
   {BLOCK_COMMENT}      { return BLOCK_COMMENT; }
