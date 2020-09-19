@@ -10,7 +10,7 @@ public interface CharjHeaders extends CharjPsiCompositeElement {
   @NotNull
   List<CharjImportDeclaration> getImportDeclarationList();
 
-  @NotNull
-  List<CharjPackageDeclaration> getPackageDeclarationList();
+  @Nullable
+  CharjPackageDeclaration getPackageDeclaration();
 
 }

@@ -5,9 +5,9 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface CharjPackageDeclaration extends CharjPsiCompositeElement {
+public interface CharjQualifiedName extends CharjPsiCompositeElement {
 
   @NotNull
-  CharjPackageName getPackageName();
+  List<CharjNameComponent> getNameComponentList();
 
 }

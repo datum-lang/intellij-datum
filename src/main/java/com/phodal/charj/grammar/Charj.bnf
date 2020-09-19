@@ -11,7 +11,6 @@
   psiPackage="com.phodal.charj.psi"
   psiImplPackage="com.phodal.charj.psi.impl"
 
-
   elementTypeHolderClass="com.phodal.charj.lexer.CharjTypes"
   elementTypeClass="com.phodal.charj.psi.CharjElementType"
   tokenTypeClass="com.phodal.charj.lexer.CharjTokenType"
@@ -24,15 +23,33 @@
       IMPORT_KEYWORD='import'
       PACKAGE_KEYWORD='pkg'
       BODY_KEYWORD='body'
+      IDENTIFIER='regexp:[_a-zA-Z][_a-zA-Z0-9]*'
   ]
 }
 
 compilationUnit ::= headers body { pin = 1}
 
-headers ::= packageDeclaration* importDeclaration*
+headers ::= packageDeclaration? importDeclaration*
 
-packageDeclaration ::= PACKAGE_KEYWORD
+packageDeclaration ::= PACKAGE_KEYWORD package_name
 
-importDeclaration ::= IMPORT_KEYWORD
+importDeclaration ::= IMPORT_KEYWORD import
 
 body ::= BODY_KEYWORD
+
+import ::= qualified_name { name = 'import' }
+
+package_name ::= qualified_name { name = 'package name' }
+
+qualified_name ::= name_component ("." name_component)*
+
+name_component ::= IDENTIFIER
+{
+  mixin="com.phodal.charj.psi.impl.CharjNamedElementImpl"
+  implements="com.phodal.charj.psi.CharjNamedElement"
+
+  methods=[
+    getReference
+  ]
+}
+

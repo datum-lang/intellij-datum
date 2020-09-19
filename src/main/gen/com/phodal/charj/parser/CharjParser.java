@@ -61,7 +61,7 @@ public class CharjParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // packageDeclaration* importDeclaration*
+  // packageDeclaration? importDeclaration*
   public static boolean headers(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "headers")) return false;
     boolean r;
@@ -72,14 +72,10 @@ public class CharjParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // packageDeclaration*
+  // packageDeclaration?
   private static boolean headers_0(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "headers_0")) return false;
-    while (true) {
-      int c = current_position_(b);
-      if (!packageDeclaration(b, l + 1)) break;
-      if (!empty_element_parsed_guard_(b, "headers_0", c)) break;
-    }
+    packageDeclaration(b, l + 1);
     return true;
   }
 
@@ -95,26 +91,99 @@ public class CharjParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // IMPORT_KEYWORD
+  // qualified_name
+  public static boolean import_$(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "import_$")) return false;
+    if (!nextTokenIs(b, "<import>", IDENTIFIER)) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, IMPORT, "<import>");
+    r = qualified_name(b, l + 1);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // IMPORT_KEYWORD import
   public static boolean importDeclaration(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "importDeclaration")) return false;
     if (!nextTokenIs(b, IMPORT_KEYWORD)) return false;
     boolean r;
     Marker m = enter_section_(b);
     r = consumeToken(b, IMPORT_KEYWORD);
+    r = r && import_$(b, l + 1);
     exit_section_(b, m, IMPORT_DECLARATION, r);
     return r;
   }
 
   /* ********************************************************** */
-  // PACKAGE_KEYWORD
+  // IDENTIFIER
+  public static boolean name_component(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "name_component")) return false;
+    if (!nextTokenIs(b, IDENTIFIER)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, IDENTIFIER);
+    exit_section_(b, m, NAME_COMPONENT, r);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // PACKAGE_KEYWORD package_name
   public static boolean packageDeclaration(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "packageDeclaration")) return false;
     if (!nextTokenIs(b, PACKAGE_KEYWORD)) return false;
     boolean r;
     Marker m = enter_section_(b);
     r = consumeToken(b, PACKAGE_KEYWORD);
+    r = r && package_name(b, l + 1);
     exit_section_(b, m, PACKAGE_DECLARATION, r);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // qualified_name
+  public static boolean package_name(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "package_name")) return false;
+    if (!nextTokenIs(b, "<package name>", IDENTIFIER)) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, PACKAGE_NAME, "<package name>");
+    r = qualified_name(b, l + 1);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // name_component ("." name_component)*
+  public static boolean qualified_name(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "qualified_name")) return false;
+    if (!nextTokenIs(b, IDENTIFIER)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = name_component(b, l + 1);
+    r = r && qualified_name_1(b, l + 1);
+    exit_section_(b, m, QUALIFIED_NAME, r);
+    return r;
+  }
+
+  // ("." name_component)*
+  private static boolean qualified_name_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "qualified_name_1")) return false;
+    while (true) {
+      int c = current_position_(b);
+      if (!qualified_name_1_0(b, l + 1)) break;
+      if (!empty_element_parsed_guard_(b, "qualified_name_1", c)) break;
+    }
+    return true;
+  }
+
+  // "." name_component
+  private static boolean qualified_name_1_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "qualified_name_1_0")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, ".");
+    r = r && name_component(b, l + 1);
+    exit_section_(b, m, null, r);
     return r;
   }
 

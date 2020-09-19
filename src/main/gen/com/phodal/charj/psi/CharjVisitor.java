@@ -14,11 +14,31 @@ public class CharjVisitor extends PsiElementVisitor {
     visitPsiCompositeElement(o);
   }
 
+  public void visitImport(@NotNull CharjImport o) {
+    visitPsiCompositeElement(o);
+  }
+
   public void visitImportDeclaration(@NotNull CharjImportDeclaration o) {
     visitPsiCompositeElement(o);
   }
 
+  public void visitNameComponent(@NotNull CharjNameComponent o) {
+    visitNamedElement(o);
+  }
+
   public void visitPackageDeclaration(@NotNull CharjPackageDeclaration o) {
+    visitPsiCompositeElement(o);
+  }
+
+  public void visitPackageName(@NotNull CharjPackageName o) {
+    visitPsiCompositeElement(o);
+  }
+
+  public void visitQualifiedName(@NotNull CharjQualifiedName o) {
+    visitPsiCompositeElement(o);
+  }
+
+  public void visitNamedElement(@NotNull CharjNamedElement o) {
     visitPsiCompositeElement(o);
   }
 

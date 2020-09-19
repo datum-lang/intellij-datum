@@ -25,15 +25,21 @@ import static com.phodal.charj.lexer.CharjTypes.*;
 EOL=\R
 WHITE_SPACE=\s+
 
+COMMENT="//"[^\r\n]*
+BLOCK_COMMENT=[/][*][^*]*[*]+([^/*][^*]*[*]+)*[/]
+IDENTIFIER=[_a-zA-Z][_a-zA-Z0-9]*
 
 %%
 <YYINITIAL> {
-  {WHITE_SPACE}      { return WHITE_SPACE; }
+  {WHITE_SPACE}        { return WHITE_SPACE; }
 
-  "import"           { return IMPORT_KEYWORD; }
-  "pkg"              { return PACKAGE_KEYWORD; }
-  "body"             { return BODY; }
+  "import"             { return IMPORT_KEYWORD; }
+  "pkg"                { return PACKAGE_KEYWORD; }
+  "body"               { return BODY_KEYWORD; }
 
+  {COMMENT}            { return COMMENT; }
+  {BLOCK_COMMENT}      { return BLOCK_COMMENT; }
+  {IDENTIFIER}         { return IDENTIFIER; }
 
 }
 

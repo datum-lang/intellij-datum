@@ -25,4 +25,10 @@ public class CharjPackageDeclarationImpl extends CharjPsiCompositeElementImpl im
     else super.accept(visitor);
   }
 
+  @Override
+  @NotNull
+  public CharjPackageName getPackageName() {
+    return findNotNullChildByClass(CharjPackageName.class);
+  }
+
 }

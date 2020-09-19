@@ -10,14 +10,14 @@ import com.intellij.psi.util.PsiTreeUtil;
 import static com.phodal.charj.lexer.CharjTypes.*;
 import com.phodal.charj.psi.*;
 
-public class CharjImportDeclarationImpl extends CharjPsiCompositeElementImpl implements CharjImportDeclaration {
+public class CharjPackageNameImpl extends CharjPsiCompositeElementImpl implements CharjPackageName {
 
-  public CharjImportDeclarationImpl(@NotNull ASTNode node) {
+  public CharjPackageNameImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull CharjVisitor visitor) {
-    visitor.visitImportDeclaration(this);
+    visitor.visitPackageName(this);
   }
 
   public void accept(@NotNull PsiElementVisitor visitor) {
@@ -27,8 +27,8 @@ public class CharjImportDeclarationImpl extends CharjPsiCompositeElementImpl imp
 
   @Override
   @NotNull
-  public CharjImport getImport() {
-    return findNotNullChildByClass(CharjImport.class);
+  public CharjQualifiedName getQualifiedName() {
+    return findNotNullChildByClass(CharjQualifiedName.class);
   }
 
 }
