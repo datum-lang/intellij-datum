@@ -1,6 +1,6 @@
 <idea-plugin>
     <id>com.github.phodal.charj</id>
-    <name>intellij-charj</name>
+    <name>Charj</name>
     <vendor>phodal</vendor>
 
     <!-- Product and plugin compatibility requirements -->
