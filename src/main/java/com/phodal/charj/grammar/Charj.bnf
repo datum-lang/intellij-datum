@@ -18,6 +18,9 @@
 
   tokenTypeClass="com.phodal.charj.lexer.CharjTokenType"
   tokens = [
+      COMMENT='regexp://[^\r\n]*'
+      BLOCK_COMMENT='regexp:[/][*][^*]*[*]+([^/*][^*]*[*]+)*[/]'
+
       IMPORT_KEYWORD='import'
       PACKAGE_KEYWORD='pkg'
       BODY_KEYWORD='body'

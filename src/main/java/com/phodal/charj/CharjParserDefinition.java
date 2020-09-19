@@ -8,12 +8,19 @@ import com.intellij.openapi.project.Project;
 import com.intellij.psi.FileViewProvider;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
+import com.intellij.psi.TokenType;
 import com.intellij.psi.tree.IFileElementType;
 import com.intellij.psi.tree.TokenSet;
+import com.phodal.charj.lexer.CharjTypes;
 import com.phodal.charj.parser.CharjParser;
 import org.jetbrains.annotations.NotNull;
 
 public class CharjParserDefinition implements ParserDefinition {
+    public static final TokenSet WHITE_SPACES = TokenSet.create(TokenType.WHITE_SPACE);
+    public static final TokenSet COMMENTS = TokenSet.create(CharjTypes.COMMENT);
+
+    public static final IFileElementType FILE = new IFileElementType(CharjLanguage.INSTANCE);
+
     @Override
     public @NotNull Lexer createLexer(Project project) {
         return new CharjLexerAdapter();
@@ -26,22 +33,22 @@ public class CharjParserDefinition implements ParserDefinition {
 
     @Override
     public IFileElementType getFileNodeType() {
-        return null;
+        return FILE;
     }
 
     @Override
     public @NotNull TokenSet getCommentTokens() {
-        return null;
+        return COMMENTS;
     }
 
     @Override
     public @NotNull TokenSet getStringLiteralElements() {
-        return null;
+        return TokenSet.EMPTY;
     }
 
     @Override
     public @NotNull PsiElement createElement(ASTNode node) {
-        return null;
+        return CharjTypes.Factory.createElement(node);
     }
 
     @Override
