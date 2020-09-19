@@ -43,7 +43,6 @@ dependencies {
     detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.13.1")
 }
 
-
 sourceSets.main {
     java {
         srcDirs("src/main/gen", "src/main/java", "src/main/kotlin")
