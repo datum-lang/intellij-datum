@@ -14,6 +14,6 @@ public interface CharjMemberDeclaration extends CharjPsiCompositeElement {
   CharjPrimitiveType getPrimitiveType();
 
   @Nullable
-  CharjQualifiedName getQualifiedName();
+  CharjStructNameDeclaration getStructNameDeclaration();
 
 }

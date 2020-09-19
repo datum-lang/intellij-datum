@@ -27,14 +27,14 @@ public class CharjExprDeclarationImpl extends CharjPsiCompositeElementImpl imple
 
   @Override
   @NotNull
-  public List<CharjNameComponent> getNameComponentList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, CharjNameComponent.class);
+  public CharjFunctionName getFunctionName() {
+    return findNotNullChildByClass(CharjFunctionName.class);
   }
 
   @Override
   @NotNull
-  public CharjQualifiedName getQualifiedName() {
-    return findNotNullChildByClass(CharjQualifiedName.class);
+  public List<CharjVariableDeclaration> getVariableDeclarationList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, CharjVariableDeclaration.class);
   }
 
 }

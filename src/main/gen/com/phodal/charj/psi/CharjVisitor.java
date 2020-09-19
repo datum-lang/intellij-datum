@@ -14,6 +14,10 @@ public class CharjVisitor extends PsiElementVisitor {
     visitPsiCompositeElement(o);
   }
 
+  public void visitFunctionName(@NotNull CharjFunctionName o) {
+    visitPsiCompositeElement(o);
+  }
+
   public void visitHeaders(@NotNull CharjHeaders o) {
     visitPsiCompositeElement(o);
   }
@@ -51,6 +55,14 @@ public class CharjVisitor extends PsiElementVisitor {
   }
 
   public void visitStructDeclaration(@NotNull CharjStructDeclaration o) {
+    visitPsiCompositeElement(o);
+  }
+
+  public void visitStructNameDeclaration(@NotNull CharjStructNameDeclaration o) {
+    visitPsiCompositeElement(o);
+  }
+
+  public void visitVariableDeclaration(@NotNull CharjVariableDeclaration o) {
     visitPsiCompositeElement(o);
   }
 

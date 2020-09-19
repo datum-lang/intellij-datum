@@ -80,17 +80,29 @@ public class CharjParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // qualified_name name_component COMMA name_component
+  // functionName variableDeclaration COMMA variableDeclaration
   public static boolean exprDeclaration(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "exprDeclaration")) return false;
     if (!nextTokenIs(b, IDENTIFIER)) return false;
     boolean r;
     Marker m = enter_section_(b);
-    r = qualified_name(b, l + 1);
-    r = r && name_component(b, l + 1);
+    r = functionName(b, l + 1);
+    r = r && variableDeclaration(b, l + 1);
     r = r && consumeToken(b, COMMA);
-    r = r && name_component(b, l + 1);
+    r = r && variableDeclaration(b, l + 1);
     exit_section_(b, m, EXPR_DECLARATION, r);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // name_component
+  public static boolean functionName(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "functionName")) return false;
+    if (!nextTokenIs(b, IDENTIFIER)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = name_component(b, l + 1);
+    exit_section_(b, m, FUNCTION_NAME, r);
     return r;
   }
 
@@ -140,7 +152,7 @@ public class CharjParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // MEMBER_PLACEHOLDER qualified_name COLON primitive_type
+  // MEMBER_PLACEHOLDER structNameDeclaration COLON primitive_type
   //  | exprDeclaration
   public static boolean memberDeclaration(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "memberDeclaration")) return false;
@@ -153,13 +165,13 @@ public class CharjParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // MEMBER_PLACEHOLDER qualified_name COLON primitive_type
+  // MEMBER_PLACEHOLDER structNameDeclaration COLON primitive_type
   private static boolean memberDeclaration_0(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "memberDeclaration_0")) return false;
     boolean r;
     Marker m = enter_section_(b);
     r = consumeToken(b, MEMBER_PLACEHOLDER);
-    r = r && qualified_name(b, l + 1);
+    r = r && structNameDeclaration(b, l + 1);
     r = r && consumeToken(b, COLON);
     r = r && primitive_type(b, l + 1);
     exit_section_(b, m, null, r);
@@ -278,6 +290,30 @@ public class CharjParser implements PsiParser, LightPsiParser {
       if (!empty_element_parsed_guard_(b, "structDeclaration_3", c)) break;
     }
     return true;
+  }
+
+  /* ********************************************************** */
+  // name_component
+  public static boolean structNameDeclaration(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "structNameDeclaration")) return false;
+    if (!nextTokenIs(b, IDENTIFIER)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = name_component(b, l + 1);
+    exit_section_(b, m, STRUCT_NAME_DECLARATION, r);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // name_component
+  public static boolean variableDeclaration(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "variableDeclaration")) return false;
+    if (!nextTokenIs(b, IDENTIFIER)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = name_component(b, l + 1);
+    exit_section_(b, m, VARIABLE_DECLARATION, r);
+    return r;
   }
 
 }

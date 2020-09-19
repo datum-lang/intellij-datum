@@ -5,12 +5,9 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface CharjExprDeclaration extends CharjPsiCompositeElement {
+public interface CharjVariableDeclaration extends CharjPsiCompositeElement {
 
   @NotNull
-  CharjFunctionName getFunctionName();
-
-  @NotNull
-  List<CharjVariableDeclaration> getVariableDeclarationList();
+  CharjNameComponent getNameComponent();
 
 }

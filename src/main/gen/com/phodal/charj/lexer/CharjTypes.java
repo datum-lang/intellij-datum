@@ -11,6 +11,7 @@ public interface CharjTypes {
 
   IElementType BODY = new CharjElementType("BODY");
   IElementType EXPR_DECLARATION = new CharjElementType("EXPR_DECLARATION");
+  IElementType FUNCTION_NAME = new CharjElementType("FUNCTION_NAME");
   IElementType HEADERS = new CharjElementType("HEADERS");
   IElementType IMPORT = new CharjElementType("IMPORT");
   IElementType IMPORT_DECLARATION = new CharjElementType("IMPORT_DECLARATION");
@@ -21,6 +22,8 @@ public interface CharjTypes {
   IElementType PRIMITIVE_TYPE = new CharjElementType("PRIMITIVE_TYPE");
   IElementType QUALIFIED_NAME = new CharjElementType("QUALIFIED_NAME");
   IElementType STRUCT_DECLARATION = new CharjElementType("STRUCT_DECLARATION");
+  IElementType STRUCT_NAME_DECLARATION = new CharjElementType("STRUCT_NAME_DECLARATION");
+  IElementType VARIABLE_DECLARATION = new CharjElementType("VARIABLE_DECLARATION");
 
   IElementType BLOCK_COMMENT = new CharjTokenType("BLOCK_COMMENT");
   IElementType BODY_KEYWORD = new CharjTokenType("body");
@@ -49,6 +52,9 @@ public interface CharjTypes {
       }
       else if (type == EXPR_DECLARATION) {
         return new CharjExprDeclarationImpl(node);
+      }
+      else if (type == FUNCTION_NAME) {
+        return new CharjFunctionNameImpl(node);
       }
       else if (type == HEADERS) {
         return new CharjHeadersImpl(node);
@@ -79,6 +85,12 @@ public interface CharjTypes {
       }
       else if (type == STRUCT_DECLARATION) {
         return new CharjStructDeclarationImpl(node);
+      }
+      else if (type == STRUCT_NAME_DECLARATION) {
+        return new CharjStructNameDeclarationImpl(node);
+      }
+      else if (type == VARIABLE_DECLARATION) {
+        return new CharjVariableDeclarationImpl(node);
       }
       throw new AssertionError("Unknown element type: " + type);
     }

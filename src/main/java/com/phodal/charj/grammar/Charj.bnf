@@ -57,7 +57,7 @@ import ::= qualified_name
 structDeclaration ::= STRUCT_KEYWORD qualified_name OPEN_BRACE memberDeclaration* CLOSE_BRACE
 
 memberDeclaration ::=
-   MEMBER_PLACEHOLDER qualified_name COLON primitive_type
+   MEMBER_PLACEHOLDER structNameDeclaration COLON primitive_type
  | exprDeclaration
 
 primitive_type ::=
@@ -66,7 +66,11 @@ primitive_type ::=
     | STRING_KEYWORD
 
 exprDeclaration ::=
-    qualified_name name_component COMMA name_component
+    functionName variableDeclaration COMMA variableDeclaration
+
+variableDeclaration ::= name_component
+functionName ::= name_component
+structNameDeclaration ::= name_component
 
 package_name ::= qualified_name { name = 'package name' }
 

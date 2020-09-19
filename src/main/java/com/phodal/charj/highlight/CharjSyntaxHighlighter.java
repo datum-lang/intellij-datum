@@ -18,8 +18,13 @@ public class CharjSyntaxHighlighter extends SyntaxHighlighterBase {
 
     static {
         fillMap(ATTRIBUTES, CharjTokenTypeSets.KEY_WORDS, DefaultLanguageHighlighterColors.KEYWORD);
+
+//        ATTRIBUTES.put(CharjTypes.COMMENT, DefaultLanguageHighlighterColors.LABEL);
         ATTRIBUTES.put(CharjTypes.COMMENT, DefaultLanguageHighlighterColors.LINE_COMMENT);
         ATTRIBUTES.put(CharjTypes.QUALIFIED_NAME, DefaultLanguageHighlighterColors.IDENTIFIER);
+        ATTRIBUTES.put(CharjTypes.CLOSE_BRACE, DefaultLanguageHighlighterColors.BRACES);
+        ATTRIBUTES.put(CharjTypes.OPEN_BRACE, DefaultLanguageHighlighterColors.BRACES);
+        ATTRIBUTES.put(CharjTypes.VARIABLE_DECLARATION, DefaultLanguageHighlighterColors.LOCAL_VARIABLE);
     }
 
     @Override
