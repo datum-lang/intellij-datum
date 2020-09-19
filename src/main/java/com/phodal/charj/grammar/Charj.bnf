@@ -23,21 +23,50 @@
       IMPORT_KEYWORD='import'
       PACKAGE_KEYWORD='pkg'
       BODY_KEYWORD='body'
+      STRUCT_KEYWORD='struct'
       IDENTIFIER='regexp:[_a-zA-Z][_a-zA-Z0-9]*'
+
+      INT_KEYWORD='int'
+      FLOAT_KEYWORD='float'
+      STRING_KEYWORD='string'
+
+      COLON=":"
+      DOUBLE_COLON="::"
+      SEMICOLON=";"
+      SLASH="/"
+      OPEN_BRACE="{"
+      CLOSE_BRACE="}"
+      SEMICOLON=","
+      COMMA=","
+      MEMBER_PLACEHOLDER="member"
   ]
 }
 
 compilationUnit ::= headers body { pin = 1}
 
-headers ::= packageDeclaration? importDeclaration*
+headers ::= packageDeclaration importDeclaration?
 
 packageDeclaration ::= PACKAGE_KEYWORD package_name
 
 importDeclaration ::= IMPORT_KEYWORD import
 
-body ::= BODY_KEYWORD
+body ::= structDeclaration* memberDeclaration?
 
-import ::= qualified_name { name = 'import' }
+import ::= qualified_name
+
+structDeclaration ::= STRUCT_KEYWORD qualified_name OPEN_BRACE memberDeclaration* CLOSE_BRACE
+
+memberDeclaration ::=
+   MEMBER_PLACEHOLDER qualified_name COLON primitive_type
+ | exprDeclaration
+
+primitive_type ::=
+      INT_KEYWORD
+    | FLOAT_KEYWORD
+    | STRING_KEYWORD
+
+exprDeclaration ::=
+    qualified_name name_component COMMA name_component
 
 package_name ::= qualified_name { name = 'package name' }
 

@@ -36,6 +36,18 @@ IDENTIFIER=[_a-zA-Z][_a-zA-Z0-9]*
   "import"             { return IMPORT_KEYWORD; }
   "pkg"                { return PACKAGE_KEYWORD; }
   "body"               { return BODY_KEYWORD; }
+  "struct"             { return STRUCT_KEYWORD; }
+  "int"                { return INT_KEYWORD; }
+  "float"              { return FLOAT_KEYWORD; }
+  "string"             { return STRING_KEYWORD; }
+  ":"                  { return COLON; }
+  "::"                 { return DOUBLE_COLON; }
+  ","                  { return SEMICOLON; }
+  "/"                  { return SLASH; }
+  "{"                  { return OPEN_BRACE; }
+  "}"                  { return CLOSE_BRACE; }
+  ","                  { return COMMA; }
+  "member"             { return MEMBER_PLACEHOLDER; }
 
   {COMMENT}            { return COMMENT; }
   {BLOCK_COMMENT}      { return BLOCK_COMMENT; }

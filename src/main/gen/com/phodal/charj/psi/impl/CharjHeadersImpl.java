@@ -26,15 +26,15 @@ public class CharjHeadersImpl extends CharjPsiCompositeElementImpl implements Ch
   }
 
   @Override
-  @NotNull
-  public List<CharjImportDeclaration> getImportDeclarationList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, CharjImportDeclaration.class);
+  @Nullable
+  public CharjImportDeclaration getImportDeclaration() {
+    return findChildByClass(CharjImportDeclaration.class);
   }
 
   @Override
-  @Nullable
+  @NotNull
   public CharjPackageDeclaration getPackageDeclaration() {
-    return findChildByClass(CharjPackageDeclaration.class);
+    return findNotNullChildByClass(CharjPackageDeclaration.class);
   }
 
 }

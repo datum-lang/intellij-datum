@@ -5,12 +5,12 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface CharjHeaders extends CharjPsiCompositeElement {
-
-  @Nullable
-  CharjImportDeclaration getImportDeclaration();
+public interface CharjStructDeclaration extends CharjPsiCompositeElement {
 
   @NotNull
-  CharjPackageDeclaration getPackageDeclaration();
+  List<CharjMemberDeclaration> getMemberDeclarationList();
+
+  @NotNull
+  CharjQualifiedName getQualifiedName();
 
 }

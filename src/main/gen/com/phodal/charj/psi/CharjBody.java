@@ -7,4 +7,10 @@ import com.intellij.psi.PsiElement;
 
 public interface CharjBody extends CharjPsiCompositeElement {
 
+  @Nullable
+  CharjMemberDeclaration getMemberDeclaration();
+
+  @NotNull
+  List<CharjStructDeclaration> getStructDeclarationList();
+
 }

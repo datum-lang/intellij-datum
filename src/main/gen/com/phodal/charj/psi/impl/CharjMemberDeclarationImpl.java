@@ -10,14 +10,14 @@ import com.intellij.psi.util.PsiTreeUtil;
 import static com.phodal.charj.lexer.CharjTypes.*;
 import com.phodal.charj.psi.*;
 
-public class CharjBodyImpl extends CharjPsiCompositeElementImpl implements CharjBody {
+public class CharjMemberDeclarationImpl extends CharjPsiCompositeElementImpl implements CharjMemberDeclaration {
 
-  public CharjBodyImpl(@NotNull ASTNode node) {
+  public CharjMemberDeclarationImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull CharjVisitor visitor) {
-    visitor.visitBody(this);
+    visitor.visitMemberDeclaration(this);
   }
 
   public void accept(@NotNull PsiElementVisitor visitor) {
@@ -27,14 +27,20 @@ public class CharjBodyImpl extends CharjPsiCompositeElementImpl implements Charj
 
   @Override
   @Nullable
-  public CharjMemberDeclaration getMemberDeclaration() {
-    return findChildByClass(CharjMemberDeclaration.class);
+  public CharjExprDeclaration getExprDeclaration() {
+    return findChildByClass(CharjExprDeclaration.class);
   }
 
   @Override
-  @NotNull
-  public List<CharjStructDeclaration> getStructDeclarationList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, CharjStructDeclaration.class);
+  @Nullable
+  public CharjPrimitiveType getPrimitiveType() {
+    return findChildByClass(CharjPrimitiveType.class);
+  }
+
+  @Override
+  @Nullable
+  public CharjQualifiedName getQualifiedName() {
+    return findChildByClass(CharjQualifiedName.class);
   }
 
 }
