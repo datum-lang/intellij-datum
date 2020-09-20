@@ -22,7 +22,7 @@ public class CharjSyntaxHighlighter extends SyntaxHighlighterBase {
         ATTRIBUTES.put(CharjTypes.DOLLAR, DefaultLanguageHighlighterColors.OPERATION_SIGN);
 
         ATTRIBUTES.put(CharjTypes.STRUCT_NAME_DECLARATION, DefaultLanguageHighlighterColors.LABEL);
-        ATTRIBUTES.put(CharjTypes.FUNCTION_DEFINE_NAME, DefaultLanguageHighlighterColors.STATIC_METHOD);
+        ATTRIBUTES.put(CharjTypes.FUNCTION_DEFINE_NAME, DefaultLanguageHighlighterColors.CONSTANT);
 
         ATTRIBUTES.put(CharjTypes.COMMENT, DefaultLanguageHighlighterColors.LINE_COMMENT);
         ATTRIBUTES.put(CharjTypes.QUALIFIED_NAME, DefaultLanguageHighlighterColors.IDENTIFIER);
