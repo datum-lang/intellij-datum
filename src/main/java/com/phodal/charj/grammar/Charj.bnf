@@ -19,21 +19,30 @@
   tokens = [
       MEMBER_PLACEHOLDER="member"
 
-      COMMENT        = 'regexp://[^\r\n]*'
-      BLOCK_COMMENT  = 'regexp:[/][*][^*]*[*]+([^/*][^*]*[*]+)*[/]'
+      COMMENT          = 'regexp://[^\r\n]*'
+      BLOCK_COMMENT    = 'regexp:[/][*][^*]*[*]+([^/*][^*]*[*]+)*[/]'
 
-      IMPORT_KEYWORD = 'import'
-      PACKAGE_KEYWORD='pkg'
-      BODY_KEYWORD   = 'body'
-      STRUCT_KEYWORD = 'struct'
-      DEF_KEYWORD    = "def"
-      IDENTIFIER     = 'regexp:[_a-zA-Z][_a-zA-Z0-9]*'
+      IDENTIFIER       = 'regexp:[_a-zA-Z][_a-zA-Z0-9]*'
 
-      INT_KEYWORD    = 'int'
-      FLOAT_KEYWORD  ='float'
-      STRING_KEYWORD ='string'
-      IN_KEYWORD     ='in'
-      OUT_KEYWORD    ='out'
+      INT_KEYWORD      ='int'
+      FLOAT_KEYWORD    ='float'
+      STRING_KEYWORD   ='string'
+      IN_KEYWORD       ='in'
+      OUT_KEYWORD      ='out'
+      MEMBER_KEYWORD   ='member'
+      STRUCT_KEYWORD   ='struct'
+      PKG_KEYWORD      ='pkg'
+      PACKAGE_KEYWORD  ='package'
+      IMPORT_KEYWORD   ='import'
+      IN_KEYWORD       ='in'
+      INSTANCE_KEYWORD ='instance'
+      MATCH_KEYWORD    ='match'
+      FX_KEYWORD       ='fx'
+      IF_KEYWORD       ='if'
+      ELIF_KEYWORD     ='elif'
+      ELSE_KEYWORD     ='else'
+      THEN_KEYWORD     ='then'
+      END_KEYWORD      ='end'
 
       COLON          = ":"
       DOUBLE_COLON   = "::"
@@ -45,6 +54,8 @@
       EQUAL          = "="
       DOLLAR         = "$"
       QUOTA          = "'"
+      LPAREN         = '('
+      RPAREN         = ')'
   ]
 }
 
@@ -52,7 +63,7 @@ compilationUnit ::= headers body { pin = 1}
 
 headers ::= packageDeclaration importDeclaration?
 
-packageDeclaration ::= PACKAGE_KEYWORD package_name
+packageDeclaration ::= (PACKAGE_KEYWORD | PKG_KEYWORD) package_name
 
 importDeclaration ::= IMPORT_KEYWORD import
 
@@ -62,7 +73,24 @@ import ::= qualified_name
 
 structDeclaration ::=
    DEF_KEYWORD? STRUCT_KEYWORD structNameDeclaration OPEN_BRACE memberDeclaration* CLOSE_BRACE
-   | structNameDeclaration DOLLAR functionDefineName OPEN_BRACE memberDeclaration* CLOSE_BRACE
+   | FX_KEYWORD structNameDeclaration DOLLAR functionDefineName functionParameters OPEN_BRACE memberDeclaration* CLOSE_BRACE
+
+functionParameters ::=
+    LPAREN inputParameters RPAREN outputParameters?
+    | IN SUB GT inputParameters
+    | outputParameters
+
+inputParameters ::= parameter (COMMA parameter)?
+
+outputParameters ::=
+  OUT_KEYWORD parameter (COMMA parameter)?
+ | SUB GT parameter (COMMA parameter)?
+
+parameter ::= IDENTIFIER COLON parameterType
+
+parameterType ::=
+    primitive_type
+  | IDENTIFIER
 
 memberDeclaration ::=
    DEF_KEYWORD? MEMBER_PLACEHOLDER structNameDeclaration COLON primitive_type

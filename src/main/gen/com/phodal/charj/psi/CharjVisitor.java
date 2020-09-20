@@ -22,6 +22,10 @@ public class CharjVisitor extends PsiElementVisitor {
     visitPsiCompositeElement(o);
   }
 
+  public void visitFunctionParameters(@NotNull CharjFunctionParameters o) {
+    visitPsiCompositeElement(o);
+  }
+
   public void visitHeaders(@NotNull CharjHeaders o) {
     visitPsiCompositeElement(o);
   }
@@ -34,6 +38,10 @@ public class CharjVisitor extends PsiElementVisitor {
     visitPsiCompositeElement(o);
   }
 
+  public void visitInputParameters(@NotNull CharjInputParameters o) {
+    visitPsiCompositeElement(o);
+  }
+
   public void visitMemberDeclaration(@NotNull CharjMemberDeclaration o) {
     visitPsiCompositeElement(o);
   }
@@ -42,11 +50,23 @@ public class CharjVisitor extends PsiElementVisitor {
     visitNamedElement(o);
   }
 
+  public void visitOutputParameters(@NotNull CharjOutputParameters o) {
+    visitPsiCompositeElement(o);
+  }
+
   public void visitPackageDeclaration(@NotNull CharjPackageDeclaration o) {
     visitPsiCompositeElement(o);
   }
 
   public void visitPackageName(@NotNull CharjPackageName o) {
+    visitPsiCompositeElement(o);
+  }
+
+  public void visitParameter(@NotNull CharjParameter o) {
+    visitPsiCompositeElement(o);
+  }
+
+  public void visitParameterType(@NotNull CharjParameterType o) {
     visitPsiCompositeElement(o);
   }
 

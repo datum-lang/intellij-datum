@@ -33,6 +33,12 @@ public class CharjStructDeclarationImpl extends CharjPsiCompositeElementImpl imp
   }
 
   @Override
+  @Nullable
+  public CharjFunctionParameters getFunctionParameters() {
+    return findChildByClass(CharjFunctionParameters.class);
+  }
+
+  @Override
   @NotNull
   public List<CharjMemberDeclaration> getMemberDeclarationList() {
     return PsiTreeUtil.getChildrenOfTypeAsList(this, CharjMemberDeclaration.class);

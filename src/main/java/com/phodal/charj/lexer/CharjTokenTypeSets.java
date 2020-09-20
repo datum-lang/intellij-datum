@@ -9,11 +9,16 @@ public interface CharjTokenTypeSets {
                     CharjTypes.IN_KEYWORD,
                     CharjTypes.OUT_KEYWORD,
                     CharjTypes.DEF_KEYWORD,
-                    CharjTypes.BODY_KEYWORD,
                     CharjTypes.IMPORT_KEYWORD,
                     CharjTypes.PACKAGE_KEYWORD,
                     CharjTypes.MEMBER_PLACEHOLDER,
-                    CharjTypes.STRUCT_KEYWORD
+                    CharjTypes.STRUCT_KEYWORD,
+                    CharjTypes.FX_KEYWORD,
+                    CharjTypes.IF_KEYWORD,
+                    CharjTypes.ELIF_KEYWORD,
+                    CharjTypes.ELSE_KEYWORD,
+                    CharjTypes.END_KEYWORD,
+                    CharjTypes.THEN_KEYWORD
             );
 
 }

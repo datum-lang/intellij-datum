@@ -10,6 +10,9 @@ public interface CharjStructDeclaration extends CharjPsiCompositeElement {
   @Nullable
   CharjFunctionDefineName getFunctionDefineName();
 
+  @Nullable
+  CharjFunctionParameters getFunctionParameters();
+
   @NotNull
   List<CharjMemberDeclaration> getMemberDeclarationList();
 

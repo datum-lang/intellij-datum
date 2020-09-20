@@ -11,14 +11,14 @@ import static com.phodal.charj.lexer.CharjTypes.*;
 import com.phodal.charj.psi.*;
 import com.phodal.charj.parser.CharjPsiImplUtil;
 
-public class CharjExprDeclarationImpl extends CharjPsiCompositeElementImpl implements CharjExprDeclaration {
+public class CharjParameterTypeImpl extends CharjPsiCompositeElementImpl implements CharjParameterType {
 
-  public CharjExprDeclarationImpl(@NotNull ASTNode node) {
+  public CharjParameterTypeImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull CharjVisitor visitor) {
-    visitor.visitExprDeclaration(this);
+    visitor.visitParameterType(this);
   }
 
   public void accept(@NotNull PsiElementVisitor visitor) {
@@ -28,20 +28,14 @@ public class CharjExprDeclarationImpl extends CharjPsiCompositeElementImpl imple
 
   @Override
   @Nullable
-  public CharjFunctionName getFunctionName() {
-    return findChildByClass(CharjFunctionName.class);
-  }
-
-  @Override
-  @Nullable
   public CharjPrimitiveType getPrimitiveType() {
     return findChildByClass(CharjPrimitiveType.class);
   }
 
   @Override
-  @NotNull
-  public List<CharjVariableDeclaration> getVariableDeclarationList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, CharjVariableDeclaration.class);
+  @Nullable
+  public PsiElement getIdentifier() {
+    return findChildByType(IDENTIFIER);
   }
 
 }

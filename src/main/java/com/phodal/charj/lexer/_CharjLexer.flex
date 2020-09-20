@@ -33,17 +33,25 @@ IDENTIFIER=[_a-zA-Z][_a-zA-Z0-9]*
 <YYINITIAL> {
   {WHITE_SPACE}        { return WHITE_SPACE; }
 
-  "import"             { return IMPORT_KEYWORD; }
-  "pkg"                { return PACKAGE_KEYWORD; }
-  "body"               { return BODY_KEYWORD; }
-  "struct"             { return STRUCT_KEYWORD; }
-  "def"                { return DEF_KEYWORD; }
   "member"             { return MEMBER_PLACEHOLDER; }
   "int"                { return INT_KEYWORD; }
   "float"              { return FLOAT_KEYWORD; }
   "string"             { return STRING_KEYWORD; }
   "in"                 { return IN_KEYWORD; }
   "out"                { return OUT_KEYWORD; }
+  "member"             { return MEMBER_KEYWORD; }
+  "struct"             { return STRUCT_KEYWORD; }
+  "pkg"                { return PKG_KEYWORD; }
+  "package"            { return PACKAGE_KEYWORD; }
+  "import"             { return IMPORT_KEYWORD; }
+  "instance"           { return INSTANCE_KEYWORD; }
+  "match"              { return MATCH_KEYWORD; }
+  "fx"                 { return FX_KEYWORD; }
+  "if"                 { return IF_KEYWORD; }
+  "elif"               { return ELIF_KEYWORD; }
+  "else"               { return ELSE_KEYWORD; }
+  "then"               { return THEN_KEYWORD; }
+  "end"                { return END_KEYWORD; }
   ":"                  { return COLON; }
   "::"                 { return DOUBLE_COLON; }
   ";"                  { return SEMICOLON; }
@@ -51,7 +59,15 @@ IDENTIFIER=[_a-zA-Z][_a-zA-Z0-9]*
   "{"                  { return OPEN_BRACE; }
   "}"                  { return CLOSE_BRACE; }
   ","                  { return COMMA; }
+  "="                  { return EQUAL; }
   "$"                  { return DOLLAR; }
+  "'"                  { return QUOTA; }
+  "("                  { return LPAREN; }
+  ")"                  { return RPAREN; }
+  "DEF_KEYWORD"        { return DEF_KEYWORD; }
+  "IN"                 { return IN; }
+  "SUB"                { return SUB; }
+  "GT"                 { return GT; }
 
   {COMMENT}            { return COMMENT; }
   {BLOCK_COMMENT}      { return BLOCK_COMMENT; }
