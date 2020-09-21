@@ -14,6 +14,7 @@ import com.phodal.charj.psi.CharjStructDeclaration;
 import com.phodal.charj.psi.CharjStructNameDeclaration;
 import com.phodal.charj.psi.impl.CharjStructNameDeclarationImpl;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;

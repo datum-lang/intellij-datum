@@ -9,7 +9,6 @@ import com.phodal.charj.psi.impl.*;
 
 public interface CharjTypes {
 
-  IElementType BODY = new CharjElementType("BODY");
   IElementType EXPR_DECLARATION = new CharjElementType("EXPR_DECLARATION");
   IElementType FUNCTION_DEFINE_NAME = new CharjElementType("FUNCTION_DEFINE_NAME");
   IElementType FUNCTION_NAME = new CharjElementType("FUNCTION_NAME");
@@ -73,10 +72,7 @@ public interface CharjTypes {
   class Factory {
     public static PsiElement createElement(ASTNode node) {
       IElementType type = node.getElementType();
-      if (type == BODY) {
-        return new CharjBodyImpl(node);
-      }
-      else if (type == EXPR_DECLARATION) {
+      if (type == EXPR_DECLARATION) {
         return new CharjExprDeclarationImpl(node);
       }
       else if (type == FUNCTION_DEFINE_NAME) {

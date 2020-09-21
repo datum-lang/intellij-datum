@@ -6,10 +6,6 @@ import com.intellij.psi.PsiElementVisitor;
 
 public class CharjVisitor extends PsiElementVisitor {
 
-  public void visitBody(@NotNull CharjBody o) {
-    visitPsiCompositeElement(o);
-  }
-
   public void visitExprDeclaration(@NotNull CharjExprDeclaration o) {
     visitPsiCompositeElement(o);
   }

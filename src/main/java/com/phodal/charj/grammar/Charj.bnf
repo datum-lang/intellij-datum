@@ -59,15 +59,13 @@
   ]
 }
 
-compilationUnit ::= headers body { pin = 1}
+compilationUnit ::= headers structDeclaration* memberDeclaration? { pin = 1}
 
 headers ::= packageDeclaration importDeclaration?
 
 packageDeclaration ::= (PACKAGE_KEYWORD | PKG_KEYWORD) package_name
 
 importDeclaration ::= IMPORT_KEYWORD import
-
-body ::= structDeclaration* memberDeclaration?
 
 import ::= qualified_name
 
