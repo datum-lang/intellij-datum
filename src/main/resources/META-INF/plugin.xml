@@ -18,6 +18,9 @@
         <lang.parserDefinition language="Charj" implementationClass="com.phodal.charj.CharjParserDefinition"/>
         <lang.syntaxHighlighterFactory language="Charj"
                                        implementationClass="com.phodal.charj.highlight.CharjSyntaxHighlighterFactory"/>
+
+        <completion.contributor language="Charj"
+                                implementationClass="com.phodal.charj.completion.CharjCompletionContributor"/>
     </extensions>
 
     <projectListeners>
