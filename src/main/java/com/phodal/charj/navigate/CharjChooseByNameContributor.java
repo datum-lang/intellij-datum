@@ -33,10 +33,6 @@ public class CharjChooseByNameContributor implements ChooseByNameContributor {
     @Override
     public @NotNull NavigationItem[] getItemsByName(String name, String pattern, Project project, boolean includeNonProjectItems) {
         List<CharjStructDeclaration> properties = findStructByKey(project, name);
-//        NavigationItem[] navigationItems = new NavigationItem[properties.size()];
-//        for (CharjStructDeclaration property : properties) {
-//
-//        }
         return properties.toArray(new NavigationItem[properties.size()]);
     }
 
