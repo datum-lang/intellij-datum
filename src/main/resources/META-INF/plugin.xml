@@ -21,6 +21,8 @@
 
         <completion.contributor language="Charj"
                                 implementationClass="com.phodal.charj.completion.CharjCompletionContributor"/>
+
+        <lang.commenter language="Charj" implementationClass="com.phodal.charj.completion.CharjCommenter"/>
     </extensions>
 
     <projectListeners>
