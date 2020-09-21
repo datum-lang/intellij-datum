@@ -14,12 +14,14 @@
 
         <fileType name="Charj File" implementationClass="com.phodal.charj.CharjFileType" fieldName="INSTANCE"
                   language="Charj" extensions="cj"/>
+        <internalFileTemplate name="Charj File"/>
+
 
         <lang.parserDefinition language="Charj" implementationClass="com.phodal.charj.CharjParserDefinition"/>
         <lang.syntaxHighlighterFactory language="Charj"
                                        implementationClass="com.phodal.charj.highlight.CharjSyntaxHighlighterFactory"/>
 
-        <codeInsight.lineMarkerProvider language="Charj"
+<!--        <codeInsight.lineMarkerProvider language="Charj"-->
 <!--                                        implementationClass="com.phodal.charj.linemarkers.CharjStructLineMarkerProvider"/>-->
 
         <gotoSymbolContributor implementation="com.phodal.charj.navigate.CharjChooseByNameContributor"/>
