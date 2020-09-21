@@ -19,6 +19,9 @@
         <lang.syntaxHighlighterFactory language="Charj"
                                        implementationClass="com.phodal.charj.highlight.CharjSyntaxHighlighterFactory"/>
 
+        <codeInsight.lineMarkerProvider language="Charj"
+<!--                                        implementationClass="com.phodal.charj.linemarkers.CharjStructLineMarkerProvider"/>-->
+
         <gotoSymbolContributor implementation="com.phodal.charj.navigate.CharjChooseByNameContributor"/>
         <completion.contributor language="Charj"
                                 implementationClass="com.phodal.charj.completion.CharjCompletionContributor"/>
