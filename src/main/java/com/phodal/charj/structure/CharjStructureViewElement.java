@@ -9,10 +9,7 @@ import com.intellij.psi.NavigatablePsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.util.PsiTreeUtil;
 import com.phodal.charj.CharjFile;
-import com.phodal.charj.psi.CharjFunctionDefineName;
-import com.phodal.charj.psi.CharjNameComponent;
-import com.phodal.charj.psi.CharjStructDeclaration;
-import com.phodal.charj.psi.CharjStructNameDeclaration;
+import com.phodal.charj.psi.*;
 import com.phodal.charj.psi.impl.CharjStructDeclarationImpl;
 import com.phodal.charj.psi.impl.CharjStructNameDeclarationImpl;
 import org.jetbrains.annotations.NotNull;
@@ -69,7 +66,7 @@ public class CharjStructureViewElement implements StructureViewTreeElement, Sort
             if (((CharjStructDeclarationImpl) myElement).getFunctionDefineName() != null) {
                 CharjFunctionDefineName functionDefineName = ((CharjStructDeclarationImpl) myElement).getFunctionDefineName();
                 assert functionDefineName != null;
-                String funcName = functionDefineName.getIdentifier().getText();
+                String funcName = functionDefineName.getText();
                 structText = structText + "$" + funcName;
             }
 
@@ -92,6 +89,8 @@ public class CharjStructureViewElement implements StructureViewTreeElement, Sort
             }
             return treeElements.toArray(new TreeElement[0]);
         }
+        // todo: add check for CharjStructDeclaration
+//        if (myElement instanceof CharjStructDeclaration) { }
         return EMPTY_ARRAY;
     }
 
