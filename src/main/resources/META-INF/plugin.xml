@@ -20,6 +20,8 @@
         <lang.parserDefinition language="Charj" implementationClass="com.phodal.charj.CharjParserDefinition"/>
         <lang.syntaxHighlighterFactory language="Charj"
                                        implementationClass="com.phodal.charj.highlight.CharjSyntaxHighlighterFactory"/>
+        <!-- Matchers -->
+<!--        <lang.braceMatcher language="Charj" implementationClass="com.phodal.charj.typing.RsBraceMatcher"/>-->
 
 <!--        <codeInsight.lineMarkerProvider language="Charj"-->
 <!--                                        implementationClass="com.phodal.charj.linemarkers.CharjStructLineMarkerProvider"/>-->
