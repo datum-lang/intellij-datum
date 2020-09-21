@@ -110,7 +110,7 @@ exprDeclaration ::=
 
 variableDeclaration ::= name_component
 functionName ::= name_component
-functionDefineName ::= name_component
+functionDefineName ::= IDENTIFIER
 structNameDeclaration ::= name_component
 
 package_name ::= qualified_name { name = 'package name' }

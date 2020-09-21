@@ -8,6 +8,6 @@ import com.intellij.psi.PsiElement;
 public interface CharjFunctionDefineName extends CharjPsiCompositeElement {
 
   @NotNull
-  CharjNameComponent getNameComponent();
+  PsiElement getIdentifier();
 
 }

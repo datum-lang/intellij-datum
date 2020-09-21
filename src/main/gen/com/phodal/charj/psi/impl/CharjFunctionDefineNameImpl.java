@@ -28,8 +28,8 @@ public class CharjFunctionDefineNameImpl extends CharjPsiCompositeElementImpl im
 
   @Override
   @NotNull
-  public CharjNameComponent getNameComponent() {
-    return findNotNullChildByClass(CharjNameComponent.class);
+  public PsiElement getIdentifier() {
+    return findNotNullChildByType(IDENTIFIER);
   }
 
 }

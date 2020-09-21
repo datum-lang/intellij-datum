@@ -107,13 +107,13 @@ public class CharjParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // name_component
+  // IDENTIFIER
   public static boolean functionDefineName(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "functionDefineName")) return false;
     if (!nextTokenIs(b, IDENTIFIER)) return false;
     boolean r;
     Marker m = enter_section_(b);
-    r = name_component(b, l + 1);
+    r = consumeToken(b, IDENTIFIER);
     exit_section_(b, m, FUNCTION_DEFINE_NAME, r);
     return r;
   }

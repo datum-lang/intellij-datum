@@ -19,7 +19,7 @@ public class CharjFile extends PsiFileBase {
 
     @Override
     public String toString() {
-        return "Simple File";
+        return "Charj File";
     }
 
 }

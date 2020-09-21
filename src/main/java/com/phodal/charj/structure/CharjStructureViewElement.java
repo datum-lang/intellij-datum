@@ -9,9 +9,11 @@ import com.intellij.psi.NavigatablePsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.util.PsiTreeUtil;
 import com.phodal.charj.CharjFile;
+import com.phodal.charj.psi.CharjFunctionDefineName;
 import com.phodal.charj.psi.CharjNameComponent;
 import com.phodal.charj.psi.CharjStructDeclaration;
 import com.phodal.charj.psi.CharjStructNameDeclaration;
+import com.phodal.charj.psi.impl.CharjStructDeclarationImpl;
 import com.phodal.charj.psi.impl.CharjStructNameDeclarationImpl;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -57,6 +59,24 @@ public class CharjStructureViewElement implements StructureViewTreeElement, Sort
     @NotNull
     @Override
     public ItemPresentation getPresentation() {
+        if (myElement instanceof CharjStructDeclarationImpl) {
+            PresentationData struct = new PresentationData();
+            struct.setIcon(null);
+            struct.setLocationString(null);
+            CharjStructNameDeclaration structNameDeclaration = ((CharjStructDeclarationImpl) myElement).getStructNameDeclaration();
+            String structText = structNameDeclaration.getText();
+
+            if (((CharjStructDeclarationImpl) myElement).getFunctionDefineName() != null) {
+                CharjFunctionDefineName functionDefineName = ((CharjStructDeclarationImpl) myElement).getFunctionDefineName();
+                assert functionDefineName != null;
+                String funcName = functionDefineName.getIdentifier().getText();
+                structText = structText + "$" + funcName;
+            }
+
+            struct.setPresentableText(structText);
+            return struct;
+        }
+
         ItemPresentation presentation = myElement.getPresentation();
         return presentation != null ? presentation : new PresentationData();
     }
