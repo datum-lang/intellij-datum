@@ -5,7 +5,7 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface CharjStructDeclaration extends CharjPsiCompositeElement {
+public interface CharjStructDeclaration extends CharjNamedElement {
 
   @Nullable
   CharjFunctionDefineName getFunctionDefineName();
@@ -18,5 +18,8 @@ public interface CharjStructDeclaration extends CharjPsiCompositeElement {
 
   @NotNull
   CharjStructNameDeclaration getStructNameDeclaration();
+
+  @Nullable
+  String getName();
 
 }

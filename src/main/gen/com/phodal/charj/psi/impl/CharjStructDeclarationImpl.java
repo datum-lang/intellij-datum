@@ -11,7 +11,7 @@ import static com.phodal.charj.lexer.CharjTypes.*;
 import com.phodal.charj.psi.*;
 import com.phodal.charj.parser.CharjPsiImplUtil;
 
-public class CharjStructDeclarationImpl extends CharjPsiCompositeElementImpl implements CharjStructDeclaration {
+public class CharjStructDeclarationImpl extends CharjNamedElementImpl implements CharjStructDeclaration {
 
   public CharjStructDeclarationImpl(@NotNull ASTNode node) {
     super(node);
@@ -48,6 +48,11 @@ public class CharjStructDeclarationImpl extends CharjPsiCompositeElementImpl imp
   @NotNull
   public CharjStructNameDeclaration getStructNameDeclaration() {
     return findNotNullChildByClass(CharjStructNameDeclaration.class);
+  }
+
+  @Override
+  public String getName() {
+    return CharjPsiImplUtil.getName(this);
   }
 
 }
