@@ -21,7 +21,8 @@
 
         <completion.contributor language="Charj"
                                 implementationClass="com.phodal.charj.completion.CharjCompletionContributor"/>
-
+        <lang.psiStructureViewFactory language="Charj"
+                                      implementationClass="com.phodal.charj.structure.CharjStructureViewFactory"/>
         <lang.commenter language="Charj" implementationClass="com.phodal.charj.completion.CharjCommenter"/>
     </extensions>
 
