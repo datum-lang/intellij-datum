@@ -1,4 +1,4 @@
-# intellij-charj
+# Intellij Charj
 
 ![Build](https://github.com/phodal/intellij-charj/workflows/Build/badge.svg)
 [![Version](https://img.shields.io/jetbrains/plugin/v/15093-intellij-charj.svg)](https://plugins.jetbrains.com/plugin/15093-intellij-charj)

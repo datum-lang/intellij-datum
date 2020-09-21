@@ -1,6 +1,6 @@
 <!-- Keep a Changelog guide -> https://keepachangelog.com -->
 
-# intellij-charj Changelog
+# Charj Changelog
 
 ## [Unreleased]
 ### Added
