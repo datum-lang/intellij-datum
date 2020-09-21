@@ -19,6 +19,7 @@
         <lang.syntaxHighlighterFactory language="Charj"
                                        implementationClass="com.phodal.charj.highlight.CharjSyntaxHighlighterFactory"/>
 
+        <gotoSymbolContributor implementation="com.phodal.charj.navigate.CharjChooseByNameContributor"/>
         <completion.contributor language="Charj"
                                 implementationClass="com.phodal.charj.completion.CharjCompletionContributor"/>
         <lang.psiStructureViewFactory language="Charj"
