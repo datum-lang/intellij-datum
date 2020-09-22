@@ -5,6 +5,7 @@ import com.intellij.ide.structureView.StructureViewTreeElement;
 import com.intellij.ide.util.treeView.smartTree.SortableTreeElement;
 import com.intellij.ide.util.treeView.smartTree.TreeElement;
 import com.intellij.navigation.ItemPresentation;
+import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
 import com.intellij.psi.NavigatablePsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.util.PsiTreeUtil;
@@ -69,6 +70,8 @@ public class CharjStructureViewElement implements StructureViewTreeElement, Sort
                 String funcName = functionDefineName.getText();
                 structText = structText + "$" + funcName;
             }
+
+            struct.setAttributesKey(DefaultLanguageHighlighterColors.KEYWORD);
 
             struct.setPresentableText(structText);
             return struct;
