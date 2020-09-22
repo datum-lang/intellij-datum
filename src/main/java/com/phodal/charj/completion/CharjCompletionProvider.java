@@ -6,5 +6,5 @@ import com.intellij.patterns.ElementPattern;
 import com.intellij.psi.PsiElement;
 
 abstract class CharjCompletionProvider  extends CompletionProvider<CompletionParameters> {
-//    ElementPattern<PsiElement> elementPattern;
+    ElementPattern<PsiElement> elementPattern;
 }
