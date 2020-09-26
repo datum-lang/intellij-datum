@@ -26,6 +26,9 @@
 <!--        <codeInsight.lineMarkerProvider language="Charj"-->
 <!--                                        implementationClass="com.phodal.charj.linemarkers.CharjStructLineMarkerProvider"/>-->
 
+        <lang.foldingBuilder language="Charj"
+                             implementationClass="com.phodal.charj.edit.CharjFoldingBuilder"/>
+
         <gotoClassContributor implementation="com.phodal.charj.navigate.CharjClassNavigationContributor"/>
 
         <gotoSymbolContributor implementation="com.phodal.charj.navigate.CharjChooseByNameContributor"/>
