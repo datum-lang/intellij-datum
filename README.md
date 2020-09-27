@@ -1,8 +1,8 @@
 # Intellij Charj
 
 ![Build](https://github.com/phodal/intellij-charj/workflows/Build/badge.svg)
-[![Version](https://img.shields.io/jetbrains/plugin/v/15093-intellij-charj.svg)](https://plugins.jetbrains.com/plugin/15093-intellij-charj)
-[![Downloads](https://img.shields.io/jetbrains/plugin/d/15093-intellij-charj.svg)](https://plugins.jetbrains.com/plugin/15093-intellij-charj)
+[![Version](https://img.shields.io/jetbrains/plugin/v/15119-charj.svg)](https://plugins.jetbrains.com/plugin/15119-charj)
+[![Downloads](https://img.shields.io/jetbrains/plugin/d/15119-charj.svg)](https://plugins.jetbrains.com/plugin/15119-charj)
 
 
 todo:
