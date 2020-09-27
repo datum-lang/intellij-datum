@@ -14,7 +14,7 @@
 
         <fileType name="Charj File" implementationClass="com.phodal.charj.CharjFileType" fieldName="INSTANCE"
                   language="Charj" extensions="cj"/>
-        <internalFileTemplate name="Charj File"/>
+<!--        <internalFileTemplate name="Charj File"/>-->
 
 
         <lang.parserDefinition language="Charj" implementationClass="com.phodal.charj.CharjParserDefinition"/>
