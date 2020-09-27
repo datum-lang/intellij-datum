@@ -5,7 +5,13 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface CharjStructDeclaration extends CharjNamedElement {
+public interface CharjStructMethodDeclaration extends CharjNamedElement {
+
+  @NotNull
+  CharjFunctionDefineName getFunctionDefineName();
+
+  @NotNull
+  CharjFunctionParameters getFunctionParameters();
 
   @NotNull
   List<CharjMemberDeclaration> getMemberDeclarationList();

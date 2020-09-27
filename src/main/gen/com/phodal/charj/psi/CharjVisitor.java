@@ -78,6 +78,10 @@ public class CharjVisitor extends PsiElementVisitor {
     visitNamedElement(o);
   }
 
+  public void visitStructMethodDeclaration(@NotNull CharjStructMethodDeclaration o) {
+    visitNamedElement(o);
+  }
+
   public void visitStructNameDeclaration(@NotNull CharjStructNameDeclaration o) {
     visitPsiCompositeElement(o);
   }

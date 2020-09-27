@@ -57,24 +57,28 @@ public class CharjStructureViewElement implements StructureViewTreeElement, Sort
     @NotNull
     @Override
     public ItemPresentation getPresentation() {
-        if (myElement instanceof CharjStructDeclarationImpl) {
-            PresentationData struct = new PresentationData();
-            struct.setIcon(null);
-            struct.setLocationString(null);
-            CharjStructNameDeclaration structNameDeclaration = ((CharjStructDeclarationImpl) myElement).getStructNameDeclaration();
-            String structText = structNameDeclaration.getText();
+        PresentationData struct = new PresentationData();
+        struct.setIcon(null);
+        struct.setLocationString(null);
 
-            if (((CharjStructDeclarationImpl) myElement).getFunctionDefineName() != null) {
-                CharjFunctionDefineName functionDefineName = ((CharjStructDeclarationImpl) myElement).getFunctionDefineName();
-                assert functionDefineName != null;
-                String funcName = functionDefineName.getText();
-                structText = structText + "$" + funcName;
-            }
+        if (myElement instanceof CharjStructDeclarationImpl) {
+            CharjStructNameDeclaration structNameDeclaration = ((CharjStructDeclarationImpl) myElement).getStructNameDeclaration();
 
             struct.setAttributesKey(DefaultLanguageHighlighterColors.KEYWORD);
+            struct.setPresentableText(structNameDeclaration.getText());
+            return struct;
+        } else if (myElement instanceof CharjStructMethodDeclaration) {
+            CharjStructMethodDeclaration myElement = (CharjStructMethodDeclaration) this.myElement;
 
+            CharjStructNameDeclaration structNameDeclaration = myElement.getStructNameDeclaration();
+            CharjFunctionDefineName functionDefineName = myElement.getFunctionDefineName();
+
+            String structText = structNameDeclaration.getText() + "$" + functionDefineName.getText();
+
+            struct.setAttributesKey(DefaultLanguageHighlighterColors.KEYWORD);
             struct.setPresentableText(structText);
             return struct;
+
         }
 
         ItemPresentation presentation = myElement.getPresentation();
@@ -87,13 +91,18 @@ public class CharjStructureViewElement implements StructureViewTreeElement, Sort
         if (myElement instanceof CharjFile) {
             List<CharjStructDeclaration> properties = PsiTreeUtil.getChildrenOfTypeAsList(myElement, CharjStructDeclaration.class);
             List<TreeElement> treeElements = new ArrayList<>(properties.size());
+            List<CharjStructMethodDeclaration> methodProperties = PsiTreeUtil.getChildrenOfTypeAsList(myElement, CharjStructMethodDeclaration.class);
+
             for (CharjStructDeclaration property : properties) {
                 treeElements.add(new CharjStructureViewElement(property));
             }
+
+            for (CharjStructMethodDeclaration property : methodProperties) {
+                treeElements.add(new CharjStructureViewElement(property));
+            }
+
             return treeElements.toArray(new TreeElement[0]);
         }
-        // todo: add check for CharjStructDeclaration
-//        if (myElement instanceof CharjStructDeclaration) { }
         return EMPTY_ARRAY;
     }
 

@@ -59,7 +59,7 @@
   ]
 }
 
-compilationUnit ::= headers structDeclaration* memberDeclaration? { pin = 1}
+compilationUnit ::= headers structDeclaration* structMethodDeclaration* memberDeclaration? { pin = 1}
 
 headers ::= packageDeclaration importDeclaration?
 
@@ -71,7 +71,13 @@ import ::= qualified_name
 
 structDeclaration ::=
    DEF_KEYWORD? STRUCT_KEYWORD structNameDeclaration OPEN_BRACE memberDeclaration* CLOSE_BRACE
-   | FX_KEYWORD structNameDeclaration DOLLAR functionDefineName functionParameters OPEN_BRACE memberDeclaration* CLOSE_BRACE
+{
+  mixin="com.phodal.charj.psi.impl.CharjNamedElementImpl"
+  implements="com.phodal.charj.psi.CharjNamedElement"
+  methods=[getName]
+}
+
+structMethodDeclaration ::= FX_KEYWORD structNameDeclaration DOLLAR functionDefineName functionParameters OPEN_BRACE memberDeclaration* CLOSE_BRACE
 {
   mixin="com.phodal.charj.psi.impl.CharjNamedElementImpl"
   implements="com.phodal.charj.psi.CharjNamedElement"

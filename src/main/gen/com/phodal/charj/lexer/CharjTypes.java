@@ -27,6 +27,7 @@ public interface CharjTypes {
   IElementType PRIMITIVE_TYPE = new CharjElementType("PRIMITIVE_TYPE");
   IElementType QUALIFIED_NAME = new CharjElementType("QUALIFIED_NAME");
   IElementType STRUCT_DECLARATION = new CharjElementType("STRUCT_DECLARATION");
+  IElementType STRUCT_METHOD_DECLARATION = new CharjElementType("STRUCT_METHOD_DECLARATION");
   IElementType STRUCT_NAME_DECLARATION = new CharjElementType("STRUCT_NAME_DECLARATION");
   IElementType VARIABLE_DECLARATION = new CharjElementType("VARIABLE_DECLARATION");
 
@@ -125,6 +126,9 @@ public interface CharjTypes {
       }
       else if (type == STRUCT_DECLARATION) {
         return new CharjStructDeclarationImpl(node);
+      }
+      else if (type == STRUCT_METHOD_DECLARATION) {
+        return new CharjStructMethodDeclarationImpl(node);
       }
       else if (type == STRUCT_NAME_DECLARATION) {
         return new CharjStructNameDeclarationImpl(node);

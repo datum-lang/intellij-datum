@@ -11,19 +11,31 @@ import static com.phodal.charj.lexer.CharjTypes.*;
 import com.phodal.charj.psi.*;
 import com.phodal.charj.parser.CharjPsiImplUtil;
 
-public class CharjStructDeclarationImpl extends CharjNamedElementImpl implements CharjStructDeclaration {
+public class CharjStructMethodDeclarationImpl extends CharjNamedElementImpl implements CharjStructMethodDeclaration {
 
-  public CharjStructDeclarationImpl(@NotNull ASTNode node) {
+  public CharjStructMethodDeclarationImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull CharjVisitor visitor) {
-    visitor.visitStructDeclaration(this);
+    visitor.visitStructMethodDeclaration(this);
   }
 
   public void accept(@NotNull PsiElementVisitor visitor) {
     if (visitor instanceof CharjVisitor) accept((CharjVisitor)visitor);
     else super.accept(visitor);
+  }
+
+  @Override
+  @NotNull
+  public CharjFunctionDefineName getFunctionDefineName() {
+    return findNotNullChildByClass(CharjFunctionDefineName.class);
+  }
+
+  @Override
+  @NotNull
+  public CharjFunctionParameters getFunctionParameters() {
+    return findNotNullChildByClass(CharjFunctionParameters.class);
   }
 
   @Override
@@ -36,11 +48,6 @@ public class CharjStructDeclarationImpl extends CharjNamedElementImpl implements
   @NotNull
   public CharjStructNameDeclaration getStructNameDeclaration() {
     return findNotNullChildByClass(CharjStructNameDeclaration.class);
-  }
-
-  @Override
-  public String getName() {
-    return CharjPsiImplUtil.getName(this);
   }
 
 }
