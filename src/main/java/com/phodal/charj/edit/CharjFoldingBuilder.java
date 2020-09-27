@@ -11,6 +11,7 @@ import com.intellij.psi.util.PsiTreeUtil;
 import com.phodal.charj.CharjFile;
 import com.phodal.charj.psi.CharjMemberDeclaration;
 import com.phodal.charj.psi.CharjStructDeclaration;
+import com.phodal.charj.psi.CharjStructNameDeclaration;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -37,13 +38,15 @@ public class CharjFoldingBuilder extends FoldingBuilderEx {
 
         @Nullable CharjStructDeclaration[] structs = PsiTreeUtil.getChildrenOfType(element, CharjStructDeclaration.class);
         for (CharjStructDeclaration struct : structs) {
-            List<CharjMemberDeclaration> memberDeclarationList = struct.getMemberDeclarationList();
-            CharjMemberDeclaration first = memberDeclarationList.get(0);
-            CharjMemberDeclaration last = memberDeclarationList.get(memberDeclarationList.size() - 1);
+            assert struct != null;
+
+            CharjStructNameDeclaration structNameDeclaration = struct.getStructNameDeclaration();
+
+            int nameEnd = structNameDeclaration.getNode().getTextRange().getStartOffset();
+            int structEnd = struct.getNode().getTextRange().getEndOffset();
+
             FoldingDescriptor foldingDescriptor = new FoldingDescriptor(Objects.requireNonNull(struct),
-                    new TextRange(
-                            first.getStartOffsetInParent(), last.getTextOffset()
-                    )
+                    new TextRange(nameEnd, structEnd)
             );
 
             descriptors.add(foldingDescriptor);
