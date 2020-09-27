@@ -15,12 +15,12 @@ todo:
  - [ ] psi.referenceContributor
  - [ ] lang.refactoringSupport
  - [ ] lang.findUsagesProvider
- - [ ] lang.foldingBuilder
+ - [x] lang.foldingBuilder
  - [ ] lang.psiStructureViewFactory
  - [ ] lang.formatter
  - [ ] codeStyleSettingsProvider
  - [ ] langCodeStyleSettingsProvider
- - [ ] lang.commenter
+ - [x] lang.commenter
 
 ## Documents
 
