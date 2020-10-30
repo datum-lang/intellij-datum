@@ -26,4 +26,10 @@ public class CharjPrimitiveTypeImpl extends CharjPsiCompositeElementImpl impleme
     else super.accept(visitor);
   }
 
+  @Override
+  @Nullable
+  public CharjNameComponent getNameComponent() {
+    return findChildByClass(CharjNameComponent.class);
+  }
+
 }

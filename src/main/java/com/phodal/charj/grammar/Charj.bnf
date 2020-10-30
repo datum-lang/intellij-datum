@@ -47,7 +47,6 @@
       IN_KEYWORD       ='in'
       INSTANCE_KEYWORD ='instance'
       MATCH_KEYWORD    ='match'
-      FX_KEYWORD       ='fx'
       ELIF_KEYWORD     ='elif'
       THEN_KEYWORD     ='then'
       END_KEYWORD      ='end'
@@ -85,7 +84,7 @@ structDeclaration ::=
   methods=[getName]
 }
 
-structMethodDeclaration ::= FX_KEYWORD structNameDeclaration DOLLAR functionDefineName functionParameters OPEN_BRACE memberDeclaration* CLOSE_BRACE
+structMethodDeclaration ::= FUN_KEYWORD? structNameDeclaration DOLLAR functionDefineName functionParameters OPEN_BRACE memberDeclaration* CLOSE_BRACE
 {
   mixin="com.phodal.charj.psi.impl.CharjNamedElementImpl"
   implements="com.phodal.charj.psi.CharjNamedElement"
@@ -110,13 +109,14 @@ parameterType ::=
   | IDENTIFIER
 
 memberDeclaration ::=
-   DEF_KEYWORD? MEMBER_PLACEHOLDER structNameDeclaration COLON primitive_type
+   DEF_KEYWORD? MEMBER_KEYWORD? structNameDeclaration COLON primitive_type
   | exprDeclaration
 
 primitive_type ::=
       INT_KEYWORD
   | FLOAT_KEYWORD
   | STRING_KEYWORD
+  | name_component
 
 exprDeclaration ::=
     functionName variableDeclaration COMMA variableDeclaration

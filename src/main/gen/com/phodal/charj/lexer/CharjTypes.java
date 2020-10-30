@@ -49,7 +49,6 @@ public interface CharjTypes {
   IElementType FLOAT_KEYWORD = new CharjTokenType("float");
   IElementType FOR_KEYWORD = new CharjTokenType("for");
   IElementType FUN_KEYWORD = new CharjTokenType("fun");
-  IElementType FX_KEYWORD = new CharjTokenType("fx");
   IElementType GT = new CharjTokenType("GT");
   IElementType IDENTIFIER = new CharjTokenType("IDENTIFIER");
   IElementType IF_KEYWORD = new CharjTokenType("if");
@@ -61,7 +60,6 @@ public interface CharjTypes {
   IElementType LPAREN = new CharjTokenType("(");
   IElementType MATCH_KEYWORD = new CharjTokenType("match");
   IElementType MEMBER_KEYWORD = new CharjTokenType("member");
-  IElementType MEMBER_PLACEHOLDER = new CharjTokenType("MEMBER_PLACEHOLDER");
   IElementType OPEN_BRACE = new CharjTokenType("{");
   IElementType OUT_KEYWORD = new CharjTokenType("out");
   IElementType PACKAGE_KEYWORD = new CharjTokenType("package");

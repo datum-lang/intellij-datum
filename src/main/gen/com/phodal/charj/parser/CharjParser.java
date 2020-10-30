@@ -265,7 +265,7 @@ public class CharjParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // DEF_KEYWORD? MEMBER_PLACEHOLDER structNameDeclaration COLON primitive_type
+  // DEF_KEYWORD? MEMBER_KEYWORD? structNameDeclaration COLON primitive_type
   //   | exprDeclaration
   public static boolean memberDeclaration(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "memberDeclaration")) return false;
@@ -277,13 +277,13 @@ public class CharjParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // DEF_KEYWORD? MEMBER_PLACEHOLDER structNameDeclaration COLON primitive_type
+  // DEF_KEYWORD? MEMBER_KEYWORD? structNameDeclaration COLON primitive_type
   private static boolean memberDeclaration_0(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "memberDeclaration_0")) return false;
     boolean r;
     Marker m = enter_section_(b);
     r = memberDeclaration_0_0(b, l + 1);
-    r = r && consumeToken(b, MEMBER_PLACEHOLDER);
+    r = r && memberDeclaration_0_1(b, l + 1);
     r = r && structNameDeclaration(b, l + 1);
     r = r && consumeToken(b, COLON);
     r = r && primitive_type(b, l + 1);
@@ -295,6 +295,13 @@ public class CharjParser implements PsiParser, LightPsiParser {
   private static boolean memberDeclaration_0_0(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "memberDeclaration_0_0")) return false;
     consumeToken(b, DEF_KEYWORD);
+    return true;
+  }
+
+  // MEMBER_KEYWORD?
+  private static boolean memberDeclaration_0_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "memberDeclaration_0_1")) return false;
+    consumeToken(b, MEMBER_KEYWORD);
     return true;
   }
 
@@ -448,6 +455,7 @@ public class CharjParser implements PsiParser, LightPsiParser {
   // INT_KEYWORD
   //   | FLOAT_KEYWORD
   //   | STRING_KEYWORD
+  //   | name_component
   public static boolean primitive_type(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "primitive_type")) return false;
     boolean r;
@@ -455,6 +463,7 @@ public class CharjParser implements PsiParser, LightPsiParser {
     r = consumeToken(b, INT_KEYWORD);
     if (!r) r = consumeToken(b, FLOAT_KEYWORD);
     if (!r) r = consumeToken(b, STRING_KEYWORD);
+    if (!r) r = name_component(b, l + 1);
     exit_section_(b, l, m, r, false, null);
     return r;
   }
@@ -530,13 +539,13 @@ public class CharjParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // FX_KEYWORD structNameDeclaration DOLLAR functionDefineName functionParameters OPEN_BRACE memberDeclaration* CLOSE_BRACE
+  // FUN_KEYWORD? structNameDeclaration DOLLAR functionDefineName functionParameters OPEN_BRACE memberDeclaration* CLOSE_BRACE
   public static boolean structMethodDeclaration(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "structMethodDeclaration")) return false;
-    if (!nextTokenIs(b, FX_KEYWORD)) return false;
+    if (!nextTokenIs(b, "<struct method declaration>", FUN_KEYWORD, IDENTIFIER)) return false;
     boolean r;
-    Marker m = enter_section_(b);
-    r = consumeToken(b, FX_KEYWORD);
+    Marker m = enter_section_(b, l, _NONE_, STRUCT_METHOD_DECLARATION, "<struct method declaration>");
+    r = structMethodDeclaration_0(b, l + 1);
     r = r && structNameDeclaration(b, l + 1);
     r = r && consumeToken(b, DOLLAR);
     r = r && functionDefineName(b, l + 1);
@@ -544,8 +553,15 @@ public class CharjParser implements PsiParser, LightPsiParser {
     r = r && consumeToken(b, OPEN_BRACE);
     r = r && structMethodDeclaration_6(b, l + 1);
     r = r && consumeToken(b, CLOSE_BRACE);
-    exit_section_(b, m, STRUCT_METHOD_DECLARATION, r);
+    exit_section_(b, l, m, r, false, null);
     return r;
+  }
+
+  // FUN_KEYWORD?
+  private static boolean structMethodDeclaration_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "structMethodDeclaration_0")) return false;
+    consumeToken(b, FUN_KEYWORD);
+    return true;
   }
 
   // memberDeclaration*

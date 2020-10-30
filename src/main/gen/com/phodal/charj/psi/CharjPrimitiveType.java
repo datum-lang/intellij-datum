@@ -7,4 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface CharjPrimitiveType extends CharjPsiCompositeElement {
 
+  @Nullable
+  CharjNameComponent getNameComponent();
+
 }
