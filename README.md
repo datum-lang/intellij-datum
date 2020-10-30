@@ -1,9 +1,8 @@
-# Intellij Charj
+# Intellij Plugin for [Charj Lang](https://github.com/charj-lang/charj)
 
 ![Build](https://github.com/phodal/intellij-charj/workflows/Build/badge.svg)
 [![Version](https://img.shields.io/jetbrains/plugin/v/15119-charj.svg)](https://plugins.jetbrains.com/plugin/15119-charj)
 [![Downloads](https://img.shields.io/jetbrains/plugin/d/15119-charj.svg)](https://plugins.jetbrains.com/plugin/15119-charj)
-
 
 todo:
 
@@ -11,6 +10,7 @@ todo:
  - [x] fileType
  - [x] lang.parserDefinition
  - [ ] lineMarkerProvider
+        - for `default$main` method
  - [ ] completion.contributor
  - [ ] psi.referenceContributor
  - [ ] lang.refactoringSupport
@@ -39,26 +39,14 @@ todo:
 ### DSL design
 
 ```
-pkg hello
-ABC$func(a: int, b: string) out a: int {
-}
-ABC$func(a: int)  -> a: int {
-    member a: int
-    if  a > b   then
-        a = b
-    elif
-        a = b
-    end
+pkg examples
 
-    if a == b then
-
-    end
-
-    if a == b then
-
-    else
-
-    end
+default$compare(int a, int b) {
+    if(a > b) {
+        return a
+    } else {
+        return b
+    }
 }
 ```
 
