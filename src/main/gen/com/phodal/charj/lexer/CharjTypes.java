@@ -31,11 +31,14 @@ public interface CharjTypes {
   IElementType STRUCT_NAME_DECLARATION = new CharjElementType("STRUCT_NAME_DECLARATION");
   IElementType VARIABLE_DECLARATION = new CharjElementType("VARIABLE_DECLARATION");
 
+  IElementType AS_KEYWORD = new CharjTokenType("as");
   IElementType BLOCK_COMMENT = new CharjTokenType("BLOCK_COMMENT");
+  IElementType BREAK_KEYWORD = new CharjTokenType("break");
   IElementType CLOSE_BRACE = new CharjTokenType("}");
   IElementType COLON = new CharjTokenType(":");
   IElementType COMMA = new CharjTokenType(",");
   IElementType COMMENT = new CharjTokenType("COMMENT");
+  IElementType CONTINUE_KEYWORD = new CharjTokenType("continue");
   IElementType DEF_KEYWORD = new CharjTokenType("DEF_KEYWORD");
   IElementType DOLLAR = new CharjTokenType("$");
   IElementType DOUBLE_COLON = new CharjTokenType("::");
@@ -44,6 +47,8 @@ public interface CharjTypes {
   IElementType END_KEYWORD = new CharjTokenType("end");
   IElementType EQUAL = new CharjTokenType("=");
   IElementType FLOAT_KEYWORD = new CharjTokenType("float");
+  IElementType FOR_KEYWORD = new CharjTokenType("for");
+  IElementType FUN_KEYWORD = new CharjTokenType("fun");
   IElementType FX_KEYWORD = new CharjTokenType("fx");
   IElementType GT = new CharjTokenType("GT");
   IElementType IDENTIFIER = new CharjTokenType("IDENTIFIER");
@@ -62,6 +67,7 @@ public interface CharjTypes {
   IElementType PACKAGE_KEYWORD = new CharjTokenType("package");
   IElementType PKG_KEYWORD = new CharjTokenType("pkg");
   IElementType QUOTA = new CharjTokenType("'");
+  IElementType RETURN_KEYWORD = new CharjTokenType("return");
   IElementType RPAREN = new CharjTokenType(")");
   IElementType SEMICOLON = new CharjTokenType(";");
   IElementType SLASH = new CharjTokenType("/");
@@ -69,6 +75,7 @@ public interface CharjTypes {
   IElementType STRUCT_KEYWORD = new CharjTokenType("struct");
   IElementType SUB = new CharjTokenType("SUB");
   IElementType THEN_KEYWORD = new CharjTokenType("then");
+  IElementType WHILE_KEYWORD = new CharjTokenType("while");
 
   class Factory {
     public static PsiElement createElement(ASTNode node) {

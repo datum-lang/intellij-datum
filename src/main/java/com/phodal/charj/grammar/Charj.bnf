@@ -17,12 +17,26 @@
 
   tokenTypeClass="com.phodal.charj.lexer.CharjTokenType"
   tokens = [
-      MEMBER_PLACEHOLDER="member"
-
       COMMENT          = 'regexp://[^\r\n]*'
       BLOCK_COMMENT    = 'regexp:[/][*][^*]*[*]+([^/*][^*]*[*]+)*[/]'
 
       IDENTIFIER       = 'regexp:[_a-zA-Z][_a-zA-Z0-9]*'
+
+      STRUCT_KEYWORD   ='struct'
+      PKG_KEYWORD      ='pkg'
+      PACKAGE_KEYWORD  ='package'
+
+      IMPORT_KEYWORD   ='import'
+      AS_KEYWORD       ='as'
+
+      IF_KEYWORD       ='if'
+      ELSE_KEYWORD     ='else'
+      FUN_KEYWORD      ='fun'
+      WHILE_KEYWORD    ='while'
+      FOR_KEYWORD      ='for'
+      BREAK_KEYWORD    ='break'
+      CONTINUE_KEYWORD ='continue'
+      RETURN_KEYWORD   ='return'
 
       INT_KEYWORD      ='int'
       FLOAT_KEYWORD    ='float'
@@ -30,17 +44,11 @@
       IN_KEYWORD       ='in'
       OUT_KEYWORD      ='out'
       MEMBER_KEYWORD   ='member'
-      STRUCT_KEYWORD   ='struct'
-      PKG_KEYWORD      ='pkg'
-      PACKAGE_KEYWORD  ='package'
-      IMPORT_KEYWORD   ='import'
       IN_KEYWORD       ='in'
       INSTANCE_KEYWORD ='instance'
       MATCH_KEYWORD    ='match'
       FX_KEYWORD       ='fx'
-      IF_KEYWORD       ='if'
       ELIF_KEYWORD     ='elif'
-      ELSE_KEYWORD     ='else'
       THEN_KEYWORD     ='then'
       END_KEYWORD      ='end'
 

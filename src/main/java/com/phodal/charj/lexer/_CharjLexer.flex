@@ -31,47 +31,54 @@ IDENTIFIER=[_a-zA-Z][_a-zA-Z0-9]*
 
 %%
 <YYINITIAL> {
-  {WHITE_SPACE}        { return WHITE_SPACE; }
+  {WHITE_SPACE}           { return WHITE_SPACE; }
 
-  "member"             { return MEMBER_PLACEHOLDER; }
-  "int"                { return INT_KEYWORD; }
-  "float"              { return FLOAT_KEYWORD; }
-  "string"             { return STRING_KEYWORD; }
-  "in"                 { return IN_KEYWORD; }
-  "out"                { return OUT_KEYWORD; }
-  "member"             { return MEMBER_KEYWORD; }
-  "struct"             { return STRUCT_KEYWORD; }
-  "pkg"                { return PKG_KEYWORD; }
-  "package"            { return PACKAGE_KEYWORD; }
-  "import"             { return IMPORT_KEYWORD; }
-  "instance"           { return INSTANCE_KEYWORD; }
-  "match"              { return MATCH_KEYWORD; }
-  "fx"                 { return FX_KEYWORD; }
-  "if"                 { return IF_KEYWORD; }
-  "elif"               { return ELIF_KEYWORD; }
-  "else"               { return ELSE_KEYWORD; }
-  "then"               { return THEN_KEYWORD; }
-  "end"                { return END_KEYWORD; }
-  ":"                  { return COLON; }
-  "::"                 { return DOUBLE_COLON; }
-  ";"                  { return SEMICOLON; }
-  "/"                  { return SLASH; }
-  "{"                  { return OPEN_BRACE; }
-  "}"                  { return CLOSE_BRACE; }
-  ","                  { return COMMA; }
-  "="                  { return EQUAL; }
-  "$"                  { return DOLLAR; }
-  "'"                  { return QUOTA; }
-  "("                  { return LPAREN; }
-  ")"                  { return RPAREN; }
-  "DEF_KEYWORD"        { return DEF_KEYWORD; }
-  "IN"                 { return IN; }
-  "SUB"                { return SUB; }
-  "GT"                 { return GT; }
+  "struct"                { return STRUCT_KEYWORD; }
+  "pkg"                   { return PKG_KEYWORD; }
+  "package"               { return PACKAGE_KEYWORD; }
+  "import"                { return IMPORT_KEYWORD; }
+  "as"                    { return AS_KEYWORD; }
+  "if"                    { return IF_KEYWORD; }
+  "else"                  { return ELSE_KEYWORD; }
+  "fun"                   { return FUN_KEYWORD; }
+  "while"                 { return WHILE_KEYWORD; }
+  "for"                   { return FOR_KEYWORD; }
+  "break"                 { return BREAK_KEYWORD; }
+  "continue"              { return CONTINUE_KEYWORD; }
+  "return"                { return RETURN_KEYWORD; }
+  "int"                   { return INT_KEYWORD; }
+  "float"                 { return FLOAT_KEYWORD; }
+  "string"                { return STRING_KEYWORD; }
+  "in"                    { return IN_KEYWORD; }
+  "out"                   { return OUT_KEYWORD; }
+  "member"                { return MEMBER_KEYWORD; }
+  "instance"              { return INSTANCE_KEYWORD; }
+  "match"                 { return MATCH_KEYWORD; }
+  "fx"                    { return FX_KEYWORD; }
+  "elif"                  { return ELIF_KEYWORD; }
+  "then"                  { return THEN_KEYWORD; }
+  "end"                   { return END_KEYWORD; }
+  ":"                     { return COLON; }
+  "::"                    { return DOUBLE_COLON; }
+  ";"                     { return SEMICOLON; }
+  "/"                     { return SLASH; }
+  "{"                     { return OPEN_BRACE; }
+  "}"                     { return CLOSE_BRACE; }
+  ","                     { return COMMA; }
+  "="                     { return EQUAL; }
+  "$"                     { return DOLLAR; }
+  "'"                     { return QUOTA; }
+  "("                     { return LPAREN; }
+  ")"                     { return RPAREN; }
+  "DEF_KEYWORD"           { return DEF_KEYWORD; }
+  "IN"                    { return IN; }
+  "SUB"                   { return SUB; }
+  "GT"                    { return GT; }
+  "MEMBER_PLACEHOLDER"    { return MEMBER_PLACEHOLDER; }
 
-  {COMMENT}            { return COMMENT; }
-  {BLOCK_COMMENT}      { return BLOCK_COMMENT; }
-  {IDENTIFIER}         { return IDENTIFIER; }
+  {COMMENT}               { return COMMENT; }
+  {BLOCK_COMMENT}         { return BLOCK_COMMENT; }
+  {IDENTIFIER}            { return IDENTIFIER; }
 
 }
 
