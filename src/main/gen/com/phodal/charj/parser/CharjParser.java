@@ -143,31 +143,37 @@ public class CharjParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // LPAREN inputParameters RPAREN outputParameters?
+  // LPAREN inputParameters? RPAREN outputParameters?
   //     | IN SUB GT inputParameters
-  //     | outputParameters
   public static boolean functionParameters(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "functionParameters")) return false;
+    if (!nextTokenIs(b, "<function parameters>", IN, LPAREN)) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, FUNCTION_PARAMETERS, "<function parameters>");
     r = functionParameters_0(b, l + 1);
     if (!r) r = functionParameters_1(b, l + 1);
-    if (!r) r = outputParameters(b, l + 1);
     exit_section_(b, l, m, r, false, null);
     return r;
   }
 
-  // LPAREN inputParameters RPAREN outputParameters?
+  // LPAREN inputParameters? RPAREN outputParameters?
   private static boolean functionParameters_0(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "functionParameters_0")) return false;
     boolean r;
     Marker m = enter_section_(b);
     r = consumeToken(b, LPAREN);
-    r = r && inputParameters(b, l + 1);
+    r = r && functionParameters_0_1(b, l + 1);
     r = r && consumeToken(b, RPAREN);
     r = r && functionParameters_0_3(b, l + 1);
     exit_section_(b, m, null, r);
     return r;
+  }
+
+  // inputParameters?
+  private static boolean functionParameters_0_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "functionParameters_0_1")) return false;
+    inputParameters(b, l + 1);
+    return true;
   }
 
   // outputParameters?
@@ -222,14 +228,57 @@ public class CharjParser implements PsiParser, LightPsiParser {
 
   /* ********************************************************** */
   // IMPORT_KEYWORD import
+  //     | IMPORT_KEYWORD "(" import (COMMA import)? ")"
   public static boolean importDeclaration(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "importDeclaration")) return false;
     if (!nextTokenIs(b, IMPORT_KEYWORD)) return false;
     boolean r;
     Marker m = enter_section_(b);
+    r = importDeclaration_0(b, l + 1);
+    if (!r) r = importDeclaration_1(b, l + 1);
+    exit_section_(b, m, IMPORT_DECLARATION, r);
+    return r;
+  }
+
+  // IMPORT_KEYWORD import
+  private static boolean importDeclaration_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "importDeclaration_0")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
     r = consumeToken(b, IMPORT_KEYWORD);
     r = r && import_$(b, l + 1);
-    exit_section_(b, m, IMPORT_DECLARATION, r);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  // IMPORT_KEYWORD "(" import (COMMA import)? ")"
+  private static boolean importDeclaration_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "importDeclaration_1")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeTokens(b, 0, IMPORT_KEYWORD, LPAREN);
+    r = r && import_$(b, l + 1);
+    r = r && importDeclaration_1_3(b, l + 1);
+    r = r && consumeToken(b, RPAREN);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  // (COMMA import)?
+  private static boolean importDeclaration_1_3(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "importDeclaration_1_3")) return false;
+    importDeclaration_1_3_0(b, l + 1);
+    return true;
+  }
+
+  // COMMA import
+  private static boolean importDeclaration_1_3_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "importDeclaration_1_3_0")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, COMMA);
+    r = r && import_$(b, l + 1);
+    exit_section_(b, m, null, r);
     return r;
   }
 
@@ -237,12 +286,11 @@ public class CharjParser implements PsiParser, LightPsiParser {
   // parameter (COMMA parameter)?
   public static boolean inputParameters(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "inputParameters")) return false;
-    if (!nextTokenIs(b, IDENTIFIER)) return false;
     boolean r;
-    Marker m = enter_section_(b);
+    Marker m = enter_section_(b, l, _NONE_, INPUT_PARAMETERS, "<input parameters>");
     r = parameter(b, l + 1);
     r = r && inputParameters_1(b, l + 1);
-    exit_section_(b, m, INPUT_PARAMETERS, r);
+    exit_section_(b, l, m, r, false, null);
     return r;
   }
 
@@ -426,15 +474,14 @@ public class CharjParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // IDENTIFIER COLON parameterType
+  // parameterType IDENTIFIER
   public static boolean parameter(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "parameter")) return false;
-    if (!nextTokenIs(b, IDENTIFIER)) return false;
     boolean r;
-    Marker m = enter_section_(b);
-    r = consumeTokens(b, 0, IDENTIFIER, COLON);
-    r = r && parameterType(b, l + 1);
-    exit_section_(b, m, PARAMETER, r);
+    Marker m = enter_section_(b, l, _NONE_, PARAMETER, "<parameter>");
+    r = parameterType(b, l + 1);
+    r = r && consumeToken(b, IDENTIFIER);
+    exit_section_(b, l, m, r, false, null);
     return r;
   }
 

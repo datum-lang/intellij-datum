@@ -21,11 +21,13 @@ public class CharjSyntaxHighlighter extends SyntaxHighlighterBase {
 
         ATTRIBUTES.put(CharjTypes.DOLLAR, DefaultLanguageHighlighterColors.OPERATION_SIGN);
 
-        ATTRIBUTES.put(CharjTypes.STRUCT_NAME_DECLARATION, DefaultLanguageHighlighterColors.LABEL);
-        ATTRIBUTES.put(CharjTypes.FUNCTION_DEFINE_NAME, DefaultLanguageHighlighterColors.CONSTANT);
+        ATTRIBUTES.put(CharjTypes.STRUCT_NAME_DECLARATION, DefaultLanguageHighlighterColors.CLASS_NAME);
+        ATTRIBUTES.put(CharjTypes.FUNCTION_DEFINE_NAME, DefaultLanguageHighlighterColors.INSTANCE_METHOD);
+
+        ATTRIBUTES.put(CharjTypes.IDENTIFIER, DefaultLanguageHighlighterColors.IDENTIFIER);
+        ATTRIBUTES.put(CharjTypes.QUALIFIED_NAME, DefaultLanguageHighlighterColors.IDENTIFIER);
 
         ATTRIBUTES.put(CharjTypes.COMMENT, DefaultLanguageHighlighterColors.LINE_COMMENT);
-        ATTRIBUTES.put(CharjTypes.QUALIFIED_NAME, DefaultLanguageHighlighterColors.IDENTIFIER);
         ATTRIBUTES.put(CharjTypes.CLOSE_BRACE, DefaultLanguageHighlighterColors.BRACES);
         ATTRIBUTES.put(CharjTypes.OPEN_BRACE, DefaultLanguageHighlighterColors.BRACES);
         ATTRIBUTES.put(CharjTypes.VARIABLE_DECLARATION, DefaultLanguageHighlighterColors.LOCAL_VARIABLE);

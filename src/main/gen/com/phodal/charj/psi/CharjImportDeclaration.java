@@ -8,6 +8,6 @@ import com.intellij.psi.PsiElement;
 public interface CharjImportDeclaration extends CharjPsiCompositeElement {
 
   @NotNull
-  CharjImport getImport();
+  List<CharjImport> getImportList();
 
 }

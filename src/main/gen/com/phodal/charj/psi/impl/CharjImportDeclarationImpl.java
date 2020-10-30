@@ -28,8 +28,8 @@ public class CharjImportDeclarationImpl extends CharjPsiCompositeElementImpl imp
 
   @Override
   @NotNull
-  public CharjImport getImport() {
-    return findNotNullChildByClass(CharjImport.class);
+  public List<CharjImport> getImportList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, CharjImport.class);
   }
 
 }

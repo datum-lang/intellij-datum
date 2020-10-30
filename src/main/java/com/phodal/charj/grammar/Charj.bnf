@@ -72,7 +72,9 @@ headers ::= packageDeclaration importDeclaration?
 
 packageDeclaration ::= (PACKAGE_KEYWORD | PKG_KEYWORD) package_name
 
-importDeclaration ::= IMPORT_KEYWORD import
+importDeclaration ::=
+    IMPORT_KEYWORD import
+    | IMPORT_KEYWORD "(" import (COMMA import)? ")"
 
 import ::= qualified_name
 
@@ -92,9 +94,8 @@ structMethodDeclaration ::= FUN_KEYWORD? structNameDeclaration DOLLAR functionDe
 }
 
 functionParameters ::=
-    LPAREN inputParameters RPAREN outputParameters?
+    LPAREN inputParameters? RPAREN outputParameters?
     | IN SUB GT inputParameters
-    | outputParameters
 
 inputParameters ::= parameter (COMMA parameter)?
 
@@ -102,7 +103,7 @@ outputParameters ::=
   OUT_KEYWORD parameter (COMMA parameter)?
  | SUB GT parameter (COMMA parameter)?
 
-parameter ::= IDENTIFIER COLON parameterType
+parameter ::= parameterType IDENTIFIER
 
 parameterType ::=
     primitive_type
