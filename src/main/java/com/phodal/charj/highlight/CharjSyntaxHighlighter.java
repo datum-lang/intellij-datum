@@ -19,7 +19,7 @@ public class CharjSyntaxHighlighter extends SyntaxHighlighterBase {
     static {
         fillMap(ATTRIBUTES, CharjTokenTypeSets.KEY_WORDS, DefaultLanguageHighlighterColors.KEYWORD);
 
-        ATTRIBUTES.put(CharjTypes.DOLLAR, DefaultLanguageHighlighterColors.OPERATION_SIGN);
+        ATTRIBUTES.put(CharjTypes.DOLLAR, DefaultLanguageHighlighterColors.HIGHLIGHTED_REFERENCE);
 
         ATTRIBUTES.put(CharjTypes.STRUCT_NAME_DECLARATION, DefaultLanguageHighlighterColors.CLASS_NAME);
         ATTRIBUTES.put(CharjTypes.FUNCTION_DEFINE_NAME, DefaultLanguageHighlighterColors.INSTANCE_METHOD);
