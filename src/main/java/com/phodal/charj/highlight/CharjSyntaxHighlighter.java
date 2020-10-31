@@ -22,6 +22,7 @@ public class CharjSyntaxHighlighter extends SyntaxHighlighterBase {
         ATTRIBUTES.put(CharjTypes.DOLLAR, DefaultLanguageHighlighterColors.HIGHLIGHTED_REFERENCE);
 
         ATTRIBUTES.put(CharjTypes.IDENTIFIER, DefaultLanguageHighlighterColors.IDENTIFIER);
+        ATTRIBUTES.put(CharjTypes.STRUCT_NAME_DECLARATION, DefaultLanguageHighlighterColors.INSTANCE_METHOD);
 
         ATTRIBUTES.put(CharjTypes.COMMENT, DefaultLanguageHighlighterColors.LINE_COMMENT);
         ATTRIBUTES.put(CharjTypes.CLOSE_BRACE, DefaultLanguageHighlighterColors.BRACES);

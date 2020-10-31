@@ -51,5 +51,5 @@ default$compare(int a, int b) {
 ```
 
 <!-- Plugin description -->
-a languages plugins for Charj
+The languages plugins for Charj language. It can highlight code, generate stucture, and others.
 <!-- Plugin description end -->
