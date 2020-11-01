@@ -132,7 +132,7 @@ private expression ::= STRING_LITERAL
 
 variableDeclaration ::= name_component
 functionName ::= name_component
-functionDefineName ::= IDENTIFIER
+functionDefineName ::= name_component
 structNameDeclaration ::= name_component
 
 package_name ::= qualified_name { name = 'package name' }
