@@ -37,9 +37,10 @@ public class CharjFoldingBuilder extends FoldingBuilderEx {
         }
 
         @Nullable CharjStructDeclaration[] structs = PsiTreeUtil.getChildrenOfType(element, CharjStructDeclaration.class);
+        if (structs == null) {
+            return descriptors.toArray(new FoldingDescriptor[0]);
+        }
         for (CharjStructDeclaration struct : structs) {
-            assert struct != null;
-
             CharjStructNameDeclaration structNameDeclaration = struct.getStructNameDeclaration();
 
             int nameEnd = structNameDeclaration.getNode().getTextRange().getStartOffset();
