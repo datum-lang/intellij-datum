@@ -21,6 +21,7 @@
       BLOCK_COMMENT    = 'regexp:[/][*][^*]*[*]+([^/*][^*]*[*]+)*[/]'
 
       IDENTIFIER       = 'regexp:[_a-zA-Z][_a-zA-Z0-9]*'
+      STRING_LITERAL   ="regexp:\"([^\\\"\r\n]|\\[^\r\n])*\"?"
 
       STRUCT_KEYWORD   ='struct'
       PKG_KEYWORD      ='pkg'
@@ -122,6 +123,12 @@ primitive_type ::=
 exprDeclaration ::=
     functionName variableDeclaration COMMA variableDeclaration
   | primitive_type variableDeclaration EQUAL
+  | method_call
+
+private method_call ::= name_component "." name_component "(" expressionList ")"
+private expressionList ::= expression (',' expression)*
+
+private expression ::= STRING_LITERAL
 
 variableDeclaration ::= name_component
 functionName ::= name_component

@@ -10,6 +10,9 @@ public interface CharjExprDeclaration extends CharjPsiCompositeElement {
   @Nullable
   CharjFunctionName getFunctionName();
 
+  @NotNull
+  List<CharjNameComponent> getNameComponentList();
+
   @Nullable
   CharjPrimitiveType getPrimitiveType();
 

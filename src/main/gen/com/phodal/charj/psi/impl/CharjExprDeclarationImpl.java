@@ -33,6 +33,12 @@ public class CharjExprDeclarationImpl extends CharjPsiCompositeElementImpl imple
   }
 
   @Override
+  @NotNull
+  public List<CharjNameComponent> getNameComponentList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, CharjNameComponent.class);
+  }
+
+  @Override
   @Nullable
   public CharjPrimitiveType getPrimitiveType() {
     return findChildByClass(CharjPrimitiveType.class);

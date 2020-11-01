@@ -70,6 +70,7 @@ public interface CharjTypes {
   IElementType SEMICOLON = new CharjTokenType(";");
   IElementType SLASH = new CharjTokenType("/");
   IElementType STRING_KEYWORD = new CharjTokenType("string");
+  IElementType STRING_LITERAL = new CharjTokenType("STRING_LITERAL");
   IElementType STRUCT_KEYWORD = new CharjTokenType("struct");
   IElementType SUB = new CharjTokenType("SUB");
   IElementType THEN_KEYWORD = new CharjTokenType("then");

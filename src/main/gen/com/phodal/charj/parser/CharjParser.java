@@ -83,12 +83,14 @@ public class CharjParser implements PsiParser, LightPsiParser {
   /* ********************************************************** */
   // functionName variableDeclaration COMMA variableDeclaration
   //   | primitive_type variableDeclaration EQUAL
+  //   | method_call
   public static boolean exprDeclaration(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "exprDeclaration")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, EXPR_DECLARATION, "<expr declaration>");
     r = exprDeclaration_0(b, l + 1);
     if (!r) r = exprDeclaration_1(b, l + 1);
+    if (!r) r = method_call(b, l + 1);
     exit_section_(b, l, m, r, false, null);
     return r;
   }
@@ -114,6 +116,47 @@ public class CharjParser implements PsiParser, LightPsiParser {
     r = primitive_type(b, l + 1);
     r = r && variableDeclaration(b, l + 1);
     r = r && consumeToken(b, EQUAL);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // STRING_LITERAL
+  static boolean expression(PsiBuilder b, int l) {
+    return consumeToken(b, STRING_LITERAL);
+  }
+
+  /* ********************************************************** */
+  // expression (',' expression)*
+  static boolean expressionList(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "expressionList")) return false;
+    if (!nextTokenIs(b, STRING_LITERAL)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = expression(b, l + 1);
+    r = r && expressionList_1(b, l + 1);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  // (',' expression)*
+  private static boolean expressionList_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "expressionList_1")) return false;
+    while (true) {
+      int c = current_position_(b);
+      if (!expressionList_1_0(b, l + 1)) break;
+      if (!empty_element_parsed_guard_(b, "expressionList_1", c)) break;
+    }
+    return true;
+  }
+
+  // ',' expression
+  private static boolean expressionList_1_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "expressionList_1_0")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, COMMA);
+    r = r && expression(b, l + 1);
     exit_section_(b, m, null, r);
     return r;
   }
@@ -351,6 +394,23 @@ public class CharjParser implements PsiParser, LightPsiParser {
     if (!recursion_guard_(b, l, "memberDeclaration_0_1")) return false;
     consumeToken(b, MEMBER_KEYWORD);
     return true;
+  }
+
+  /* ********************************************************** */
+  // name_component "." name_component "(" expressionList ")"
+  static boolean method_call(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "method_call")) return false;
+    if (!nextTokenIs(b, IDENTIFIER)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = name_component(b, l + 1);
+    r = r && consumeToken(b, ".");
+    r = r && name_component(b, l + 1);
+    r = r && consumeToken(b, LPAREN);
+    r = r && expressionList(b, l + 1);
+    r = r && consumeToken(b, RPAREN);
+    exit_section_(b, m, null, r);
+    return r;
   }
 
   /* ********************************************************** */
