@@ -9,8 +9,11 @@ import com.phodal.charj.psi.CharjStructDeclaration
 import com.phodal.charj.psi.impl.CharjStructMethodDeclarationImpl
 
 class CharjStructLineMarkerProvider : RelatedItemLineMarkerProvider() {
-    override fun collectNavigationMarkers(element: PsiElement,
-                                          result: MutableCollection<in RelatedItemLineMarkerInfo<*>?>) {
+//    @SuppressWarnings("formatting.Indentation", "formatting.ParameterListWrapping")
+    override fun collectNavigationMarkers(
+            element: PsiElement,
+            result: MutableCollection<in RelatedItemLineMarkerInfo<*>?>) {
+
         // This must be an element with a literal expression as a parent
         when (element) {
             is CharjStructDeclaration -> {
