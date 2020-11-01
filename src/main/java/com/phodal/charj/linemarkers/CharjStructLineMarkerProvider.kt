@@ -12,15 +12,16 @@ import com.phodal.charj.psi.impl.CharjStructMethodDeclarationImpl
 
 class CharjStructLineMarkerProvider : RelatedItemLineMarkerProvider() {
     override fun collectNavigationMarkers(
-            element: PsiElement,
-            result: MutableCollection<in RelatedItemLineMarkerInfo<*>?>) {
+        element: PsiElement,
+        result: MutableCollection<in RelatedItemLineMarkerInfo<*>?>
+    ) {
 
         // This must be an element with a literal expression as a parent
         when (element) {
             is CharjStructDeclaration -> {
                 val builder = NavigationGutterIconBuilder.create(AllIcons.Hierarchy.Class)
-                        .setTargets(element)
-                        .setTooltipText("Struct")
+                    .setTargets(element)
+                    .setTooltipText("Struct")
                 result.add(builder.createLineMarkerInfo(element))
             }
             is CharjStructMethodDeclarationImpl -> {
@@ -30,8 +31,8 @@ class CharjStructLineMarkerProvider : RelatedItemLineMarkerProvider() {
                 if (structName == "default" && funcName == "main") {
                     // all icons: https://jetbrains.design/intellij/resources/icons_list/
                     val builder = NavigationGutterIconBuilder.create(AllIcons.Actions.Execute)
-                            .setTargets(element)
-                            .setTooltipText("Run App")
+                        .setTargets(element)
+                        .setTooltipText("Run App")
                     result.add(builder.createLineMarkerInfo(element))
                 }
             }

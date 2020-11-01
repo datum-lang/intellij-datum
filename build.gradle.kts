@@ -14,7 +14,7 @@ plugins {
     id("org.jetbrains.changelog") version "0.5.0"
     // detekt linter - read more: https://detekt.github.io/detekt/gradle.html
     id("io.gitlab.arturbosch.detekt") version "1.13.1"
-    // ktlint linter - read more: https://github.com/JLLeitschuh/ktlint-gradle
+    // ktlint linter - read more: https://github.com/JLLeitschuh/ktΩ-gradle
     id("org.jlleitschuh.gradle.ktlint") version "9.4.0"
 }
 
