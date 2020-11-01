@@ -21,8 +21,8 @@
         <!-- Matchers -->
 <!--        <lang.braceMatcher language="Charj" implementationClass="com.phodal.charj.typing.RsBraceMatcher"/>-->
 
-<!--        <codeInsight.lineMarkerProvider language="Charj"-->
-<!--                                        implementationClass="com.phodal.charj.linemarkers.CharjStructLineMarkerProvider"/>-->
+        <codeInsight.lineMarkerProvider language="Charj"
+                                        implementationClass="com.phodal.charj.linemarkers.CharjStructLineMarkerProvider"/>
 
         <lang.foldingBuilder language="Charj"
                              implementationClass="com.phodal.charj.edit.CharjFoldingBuilder"/>
