@@ -40,7 +40,7 @@ repositories {
     jcenter()
 }
 dependencies {
-    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.13.1")
+    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.14.2")
 }
 
 sourceSets.main {
