@@ -1,3 +1,5 @@
+@file:Suppress("Indentation", "ParameterListWrapping")
+
 package com.phodal.charj.linemarkers
 
 import com.intellij.codeInsight.daemon.RelatedItemLineMarkerInfo
@@ -9,7 +11,6 @@ import com.phodal.charj.psi.CharjStructDeclaration
 import com.phodal.charj.psi.impl.CharjStructMethodDeclarationImpl
 
 class CharjStructLineMarkerProvider : RelatedItemLineMarkerProvider() {
-//    @SuppressWarnings("formatting.Indentation", "formatting.ParameterListWrapping")
     override fun collectNavigationMarkers(
             element: PsiElement,
             result: MutableCollection<in RelatedItemLineMarkerInfo<*>?>) {
