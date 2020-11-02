@@ -37,7 +37,9 @@ todo:
 2. **right click** `.flex` file and click
     - Run JFlex Generator
 
-### DSL design
+### Examples
+
+see more in [Charj Demo](https://github.com/charj-lang/charj-demo)
 
 ```
 pkg examples
