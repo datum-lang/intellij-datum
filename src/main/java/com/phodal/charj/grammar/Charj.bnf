@@ -42,12 +42,12 @@
       INT_KEYWORD      ='int'
       FLOAT_KEYWORD    ='float'
       STRING_KEYWORD   ='string'
-      IN_KEYWORD       ='in'
       OUT_KEYWORD      ='out'
       MEMBER_KEYWORD   ='member'
       IN_KEYWORD       ='in'
       INSTANCE_KEYWORD ='instance'
       MATCH_KEYWORD    ='match'
+
       ELIF_KEYWORD     ='elif'
       THEN_KEYWORD     ='then'
       END_KEYWORD      ='end'
