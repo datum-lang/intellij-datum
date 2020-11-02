@@ -21,7 +21,7 @@
       BLOCK_COMMENT    = 'regexp:[/][*][^*]*[*]+([^/*][^*]*[*]+)*[/]'
 
       IDENTIFIER       = 'regexp:[_a-zA-Z][_a-zA-Z0-9]*'
-      STRING_LITERAL   ="regexp:\"([^\\\"\r\n]|\\[^\r\n])*\"?"
+      STRING_LITERAL   = "regexp:\"([^\\\"\r\n]|\\[^\r\n])*\"?"
 
       STRUCT_KEYWORD   ='struct'
       PKG_KEYWORD      ='pkg'
@@ -42,9 +42,13 @@
       INT_KEYWORD      ='int'
       FLOAT_KEYWORD    ='float'
       STRING_KEYWORD   ='string'
-      OUT_KEYWORD      ='out'
-      MEMBER_KEYWORD   ='member'
+      BOOL_KEYWORD     ='bool'
+      BYTES_KEYWORD    ='bytes'
+
       IN_KEYWORD       ='in'
+      OUT_KEYWORD      ='out'
+
+      MEMBER_KEYWORD   ='member'
       INSTANCE_KEYWORD ='instance'
       MATCH_KEYWORD    ='match'
 

@@ -33,7 +33,9 @@ public interface CharjTypes {
 
   IElementType AS_KEYWORD = new CharjTokenType("as");
   IElementType BLOCK_COMMENT = new CharjTokenType("BLOCK_COMMENT");
+  IElementType BOOL_KEYWORD = new CharjTokenType("bool");
   IElementType BREAK_KEYWORD = new CharjTokenType("break");
+  IElementType BYTES_KEYWORD = new CharjTokenType("bytes");
   IElementType CLOSE_BRACE = new CharjTokenType("}");
   IElementType COLON = new CharjTokenType(":");
   IElementType COMMA = new CharjTokenType(",");

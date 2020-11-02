@@ -50,6 +50,8 @@ STRING_LITERAL=\"([^\\\"\r\n]|\\[^\r\n])*\"?
   "int"                 { return INT_KEYWORD; }
   "float"               { return FLOAT_KEYWORD; }
   "string"              { return STRING_KEYWORD; }
+  "bool"                { return BOOL_KEYWORD; }
+  "bytes"               { return BYTES_KEYWORD; }
   "in"                  { return IN_KEYWORD; }
   "out"                 { return OUT_KEYWORD; }
   "member"              { return MEMBER_KEYWORD; }
