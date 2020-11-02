@@ -9,8 +9,9 @@ todo:
  - [x] Highlighter
  - [x] fileType
  - [x] lang.parserDefinition
- - [ ] lineMarkerProvider
-        - for `default$main` method
+ - [x] lineMarkerProvider
+      - [x] `default$main` method
+      - [x] `struct` identify
  - [ ] completion.contributor
  - [ ] psi.referenceContributor
  - [ ] lang.refactoringSupport
