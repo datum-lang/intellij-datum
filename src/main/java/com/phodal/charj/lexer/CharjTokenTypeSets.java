@@ -34,7 +34,6 @@ public interface CharjTokenTypeSets {
             CharjTypes.INSTANCE_KEYWORD,
 
             CharjTypes.ELIF_KEYWORD,
-            CharjTypes.THEN_KEYWORD,
             CharjTypes.END_KEYWORD,
 
             CharjTypes.MATCH_KEYWORD
