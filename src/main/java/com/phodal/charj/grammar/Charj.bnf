@@ -53,7 +53,6 @@
       MATCH_KEYWORD    ='match'
 
       ELIF_KEYWORD     ='elif'
-      THEN_KEYWORD     ='then'
       END_KEYWORD      ='end'
 
       COLON          = ":"

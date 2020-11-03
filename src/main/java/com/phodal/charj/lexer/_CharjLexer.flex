@@ -58,7 +58,6 @@ STRING_LITERAL=\"([^\\\"\r\n]|\\[^\r\n])*\"?
   "instance"            { return INSTANCE_KEYWORD; }
   "match"               { return MATCH_KEYWORD; }
   "elif"                { return ELIF_KEYWORD; }
-  "then"                { return THEN_KEYWORD; }
   "end"                 { return END_KEYWORD; }
   ":"                   { return COLON; }
   "::"                  { return DOUBLE_COLON; }

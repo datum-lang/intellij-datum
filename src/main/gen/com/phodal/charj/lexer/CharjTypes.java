@@ -75,7 +75,6 @@ public interface CharjTypes {
   IElementType STRING_LITERAL = new CharjTokenType("STRING_LITERAL");
   IElementType STRUCT_KEYWORD = new CharjTokenType("struct");
   IElementType SUB = new CharjTokenType("SUB");
-  IElementType THEN_KEYWORD = new CharjTokenType("then");
   IElementType WHILE_KEYWORD = new CharjTokenType("while");
 
   class Factory {
