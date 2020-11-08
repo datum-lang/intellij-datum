@@ -10,6 +10,7 @@ import com.intellij.psi.util.PsiTreeUtil;
 import static com.phodal.charj.lexer.CharjTypes.*;
 import com.phodal.charj.psi.*;
 import com.phodal.charj.parser.CharjPsiImplUtil;
+import com.intellij.navigation.ItemPresentation;
 
 public class CharjStructDeclarationImpl extends CharjNamedElementImpl implements CharjStructDeclaration {
 
@@ -41,6 +42,11 @@ public class CharjStructDeclarationImpl extends CharjNamedElementImpl implements
   @Override
   public String getName() {
     return CharjPsiImplUtil.getName(this);
+  }
+
+  @Override
+  public ItemPresentation getPresentation() {
+    return CharjPsiImplUtil.getPresentation(this);
   }
 
 }

@@ -4,6 +4,7 @@ package com.phodal.charj.psi;
 import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
+import com.intellij.navigation.ItemPresentation;
 
 public interface CharjStructDeclaration extends CharjNamedElement {
 
@@ -15,5 +16,8 @@ public interface CharjStructDeclaration extends CharjNamedElement {
 
   @Nullable
   String getName();
+
+  @Nullable
+  ItemPresentation getPresentation();
 
 }
