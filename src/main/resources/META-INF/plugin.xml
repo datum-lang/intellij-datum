@@ -27,6 +27,9 @@
         <gotoClassContributor implementation="com.phodal.charj.navigate.CharjClassNavigationContributor"/>
 
         <gotoSymbolContributor implementation="com.phodal.charj.navigate.CharjChooseByNameContributor"/>
+        <lang.findUsagesProvider language="Charj"
+                                 implementationClass="com.phodal.charj.language.CharjFindUsagesProvider"/>
+
         <completion.contributor language="Charj"
                                 implementationClass="com.phodal.charj.completion.CharjCompletionContributor"/>
         <lang.psiStructureViewFactory language="Charj"
