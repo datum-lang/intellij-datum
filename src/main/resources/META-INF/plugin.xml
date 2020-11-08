@@ -8,6 +8,8 @@
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
+        <stubIndex implementation="com.phodal.charj.psi.stubs.CharjStructNameIndex"/>
+
         <fileType name="Charj File" implementationClass="com.phodal.charj.CharjFileType" fieldName="INSTANCE"
                   language="Charj" extensions="cj"/>
 
