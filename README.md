@@ -45,12 +45,21 @@ see more in [Charj Demo](https://github.com/charj-lang/charj-demo)
 ```
 pkg examples
 
-default$compare(int a, int b) {
-    if(a > b) {
-        return a
-    } else {
-        return b
-    }
+
+import fmt
+
+default$main() {
+    fmt.println("hello,world")
+}
+
+struct Summary {
+  	Name   : string
+	FanIn  : int
+	FanOut : int
+}
+
+struct Hello {
+    summary : Summary
 }
 ```
 
