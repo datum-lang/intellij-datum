@@ -10,6 +10,7 @@ import com.intellij.psi.util.PsiTreeUtil;
 import static com.phodal.charj.lexer.CharjTypes.*;
 import com.phodal.charj.psi.*;
 import com.phodal.charj.parser.CharjPsiImplUtil;
+import com.intellij.navigation.ItemPresentation;
 
 public class CharjStructMethodDeclarationImpl extends CharjNamedElementImpl implements CharjStructMethodDeclaration {
 

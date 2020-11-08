@@ -94,7 +94,7 @@ structMethodDeclaration ::= FUN_KEYWORD? structNameDeclaration DOLLAR functionDe
 {
   mixin="com.phodal.charj.psi.impl.CharjNamedElementImpl"
   implements="com.phodal.charj.psi.CharjNamedElement"
-  methods=[getName]
+  methods=[getName getPresentation]
 }
 
 functionParameters ::=
