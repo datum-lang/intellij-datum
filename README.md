@@ -16,6 +16,7 @@ todo:
  - [ ] psi.referenceContributor
  - [ ] lang.refactoringSupport
  - [ ] lang.findUsagesProvider
+     - [ ] goto declaration
  - [x] lang.foldingBuilder
  - [ ] lang.psiStructureViewFactory
  - [ ] lang.formatter
