@@ -36,9 +36,4 @@
                                       implementationClass="com.phodal.charj.structure.CharjStructureViewFactory"/>
         <lang.commenter language="Charj" implementationClass="com.phodal.charj.completion.CharjCommenter"/>
     </extensions>
-
-    <projectListeners>
-        <listener class="com.github.phodal.charj.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
-    </projectListeners>
 </idea-plugin>
