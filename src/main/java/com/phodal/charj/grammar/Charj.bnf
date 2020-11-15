@@ -64,6 +64,8 @@
       COMMA          = ","
       EQUAL          = "="
       DOLLAR         = "$"
+      STAR           = "*"
+      RARROW         = "->"
       QUOTA          = "'"
       LPAREN         = '('
       RPAREN         = ')'
@@ -90,7 +92,7 @@ structDeclaration ::=
   methods=[getName getPresentation]
 }
 
-structMethodDeclaration ::= FUN_KEYWORD? structNameDeclaration DOLLAR functionDefineName functionParameters OPEN_BRACE memberDeclaration* CLOSE_BRACE
+structMethodDeclaration ::= FUN_KEYWORD? structNameDeclaration DOLLAR functionDefineName functionParameters ('->' typeLiteral)? OPEN_BRACE memberDeclaration* CLOSE_BRACE
 {
   mixin="com.phodal.charj.psi.impl.CharjNamedElementImpl"
   implements="com.phodal.charj.psi.CharjNamedElement"
@@ -138,6 +140,7 @@ functionName ::= name_component
 functionDefineName ::= name_component
 structNameDeclaration ::= name_component
 
+typeLiteral ::= name_component
 package_name ::= qualified_name { name = 'package name' }
 
 qualified_name ::= name_component ("." name_component)*

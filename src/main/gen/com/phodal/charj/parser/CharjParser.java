@@ -646,7 +646,7 @@ public class CharjParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // FUN_KEYWORD? structNameDeclaration DOLLAR functionDefineName functionParameters OPEN_BRACE memberDeclaration* CLOSE_BRACE
+  // FUN_KEYWORD? structNameDeclaration DOLLAR functionDefineName functionParameters ('->' typeLiteral)? OPEN_BRACE memberDeclaration* CLOSE_BRACE
   public static boolean structMethodDeclaration(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "structMethodDeclaration")) return false;
     if (!nextTokenIs(b, "<struct method declaration>", FUN_KEYWORD, IDENTIFIER)) return false;
@@ -657,8 +657,9 @@ public class CharjParser implements PsiParser, LightPsiParser {
     r = r && consumeToken(b, DOLLAR);
     r = r && functionDefineName(b, l + 1);
     r = r && functionParameters(b, l + 1);
+    r = r && structMethodDeclaration_5(b, l + 1);
     r = r && consumeToken(b, OPEN_BRACE);
-    r = r && structMethodDeclaration_6(b, l + 1);
+    r = r && structMethodDeclaration_7(b, l + 1);
     r = r && consumeToken(b, CLOSE_BRACE);
     exit_section_(b, l, m, r, false, null);
     return r;
@@ -671,13 +672,31 @@ public class CharjParser implements PsiParser, LightPsiParser {
     return true;
   }
 
+  // ('->' typeLiteral)?
+  private static boolean structMethodDeclaration_5(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "structMethodDeclaration_5")) return false;
+    structMethodDeclaration_5_0(b, l + 1);
+    return true;
+  }
+
+  // '->' typeLiteral
+  private static boolean structMethodDeclaration_5_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "structMethodDeclaration_5_0")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, RARROW);
+    r = r && typeLiteral(b, l + 1);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
   // memberDeclaration*
-  private static boolean structMethodDeclaration_6(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "structMethodDeclaration_6")) return false;
+  private static boolean structMethodDeclaration_7(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "structMethodDeclaration_7")) return false;
     while (true) {
       int c = current_position_(b);
       if (!memberDeclaration(b, l + 1)) break;
-      if (!empty_element_parsed_guard_(b, "structMethodDeclaration_6", c)) break;
+      if (!empty_element_parsed_guard_(b, "structMethodDeclaration_7", c)) break;
     }
     return true;
   }
@@ -691,6 +710,18 @@ public class CharjParser implements PsiParser, LightPsiParser {
     Marker m = enter_section_(b);
     r = name_component(b, l + 1);
     exit_section_(b, m, STRUCT_NAME_DECLARATION, r);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // name_component
+  public static boolean typeLiteral(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "typeLiteral")) return false;
+    if (!nextTokenIs(b, IDENTIFIER)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = name_component(b, l + 1);
+    exit_section_(b, m, TYPE_LITERAL, r);
     return r;
   }
 

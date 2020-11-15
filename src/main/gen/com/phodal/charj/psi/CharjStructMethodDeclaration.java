@@ -21,6 +21,9 @@ public interface CharjStructMethodDeclaration extends CharjNamedElement {
   CharjStructNameDeclaration getStructNameDeclaration();
 
   @Nullable
+  CharjTypeLiteral getTypeLiteral();
+
+  @Nullable
   String getName();
 
   @Nullable

@@ -68,6 +68,8 @@ STRING_LITERAL=\"([^\\\"\r\n]|\\[^\r\n])*\"?
   ","                   { return COMMA; }
   "="                   { return EQUAL; }
   "$"                   { return DOLLAR; }
+  "*"                   { return STAR; }
+  "->"                  { return RARROW; }
   "'"                   { return QUOTA; }
   "("                   { return LPAREN; }
   ")"                   { return RPAREN; }

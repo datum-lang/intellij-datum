@@ -86,6 +86,10 @@ public class CharjVisitor extends PsiElementVisitor {
     visitPsiCompositeElement(o);
   }
 
+  public void visitTypeLiteral(@NotNull CharjTypeLiteral o) {
+    visitPsiCompositeElement(o);
+  }
+
   public void visitVariableDeclaration(@NotNull CharjVariableDeclaration o) {
     visitPsiCompositeElement(o);
   }

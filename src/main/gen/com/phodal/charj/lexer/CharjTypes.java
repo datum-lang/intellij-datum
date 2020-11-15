@@ -29,6 +29,7 @@ public interface CharjTypes {
   IElementType STRUCT_DECLARATION = new CharjElementType("STRUCT_DECLARATION");
   IElementType STRUCT_METHOD_DECLARATION = new CharjElementType("STRUCT_METHOD_DECLARATION");
   IElementType STRUCT_NAME_DECLARATION = new CharjElementType("STRUCT_NAME_DECLARATION");
+  IElementType TYPE_LITERAL = new CharjElementType("TYPE_LITERAL");
   IElementType VARIABLE_DECLARATION = new CharjElementType("VARIABLE_DECLARATION");
 
   IElementType AS_KEYWORD = new CharjTokenType("as");
@@ -67,10 +68,12 @@ public interface CharjTypes {
   IElementType PACKAGE_KEYWORD = new CharjTokenType("package");
   IElementType PKG_KEYWORD = new CharjTokenType("pkg");
   IElementType QUOTA = new CharjTokenType("'");
+  IElementType RARROW = new CharjTokenType("->");
   IElementType RETURN_KEYWORD = new CharjTokenType("return");
   IElementType RPAREN = new CharjTokenType(")");
   IElementType SEMICOLON = new CharjTokenType(";");
   IElementType SLASH = new CharjTokenType("/");
+  IElementType STAR = new CharjTokenType("*");
   IElementType STRING_KEYWORD = new CharjTokenType("string");
   IElementType STRING_LITERAL = new CharjTokenType("STRING_LITERAL");
   IElementType STRUCT_KEYWORD = new CharjTokenType("struct");
@@ -139,6 +142,9 @@ public interface CharjTypes {
       }
       else if (type == STRUCT_NAME_DECLARATION) {
         return new CharjStructNameDeclarationImpl(node);
+      }
+      else if (type == TYPE_LITERAL) {
+        return new CharjTypeLiteralImpl(node);
       }
       else if (type == VARIABLE_DECLARATION) {
         return new CharjVariableDeclarationImpl(node);

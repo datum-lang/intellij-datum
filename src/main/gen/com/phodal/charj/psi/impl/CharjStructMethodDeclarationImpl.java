@@ -51,4 +51,10 @@ public class CharjStructMethodDeclarationImpl extends CharjNamedElementImpl impl
     return findNotNullChildByClass(CharjStructNameDeclaration.class);
   }
 
+  @Override
+  @Nullable
+  public CharjTypeLiteral getTypeLiteral() {
+    return findChildByClass(CharjTypeLiteral.class);
+  }
+
 }
