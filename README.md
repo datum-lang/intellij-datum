@@ -1,4 +1,4 @@
-# Intellij Plugin for [Charj Lang](https://github.com/datum-lang/datum)
+# Intellij Plugin for [Datum Lang](https://github.com/datum-lang/datum)
 
 ![Build](https://github.com/phodal/intellij-charj/workflows/Build/badge.svg)
 [![Version](https://img.shields.io/jetbrains/plugin/v/15119-charj.svg)](https://plugins.jetbrains.com/plugin/15119-charj)

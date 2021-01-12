@@ -1,6 +1,6 @@
 <idea-plugin>
-    <id>com.phodal.charj</id>
-    <name>Charj</name>
+    <id>com.phodal.datum</id>
+    <name>Datum</name>
     <vendor>phodal</vendor>
 
     <!-- Product and plugin compatibility requirements -->
@@ -8,32 +8,32 @@
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <stubIndex implementation="com.phodal.charj.psi.stubs.CharjStructNameIndex"/>
+        <stubIndex implementation="com.phodal.datum.psi.stubs.CharjStructNameIndex"/>
 
-        <fileType name="Charj File" implementationClass="com.phodal.charj.CharjFileType" fieldName="INSTANCE"
+        <fileType name="Charj File" implementationClass="com.phodal.datum.CharjFileType" fieldName="INSTANCE"
                   language="Charj" extensions="cj"/>
 
-        <lang.parserDefinition language="Charj" implementationClass="com.phodal.charj.CharjParserDefinition"/>
+        <lang.parserDefinition language="Charj" implementationClass="com.phodal.datum.CharjParserDefinition"/>
         <lang.syntaxHighlighterFactory language="Charj"
-                                       implementationClass="com.phodal.charj.highlight.CharjSyntaxHighlighterFactory"/>
+                                       implementationClass="com.phodal.datum.highlight.CharjSyntaxHighlighterFactory"/>
         <!-- Matchers -->
-<!--        <lang.braceMatcher language="Charj" implementationClass="com.phodal.charj.typing.RsBraceMatcher"/>-->
+        <!--        <lang.braceMatcher language="Charj" implementationClass="com.phodal.datum.typing.RsBraceMatcher"/>-->
 
         <codeInsight.lineMarkerProvider language="Charj"
-                                        implementationClass="com.phodal.charj.linemarkers.CharjStructLineMarkerProvider"/>
+                                        implementationClass="com.phodal.datum.linemarkers.CharjStructLineMarkerProvider"/>
 
         <lang.foldingBuilder language="Charj"
-                             implementationClass="com.phodal.charj.edit.CharjFoldingBuilder"/>
-        <gotoClassContributor implementation="com.phodal.charj.navigate.CharjClassNavigationContributor"/>
+                             implementationClass="com.phodal.datum.edit.CharjFoldingBuilder"/>
+        <gotoClassContributor implementation="com.phodal.datum.navigate.CharjClassNavigationContributor"/>
 
-        <gotoSymbolContributor implementation="com.phodal.charj.navigate.CharjChooseByNameContributor"/>
+        <gotoSymbolContributor implementation="com.phodal.datum.navigate.CharjChooseByNameContributor"/>
         <lang.findUsagesProvider language="Charj"
-                                 implementationClass="com.phodal.charj.language.CharjFindUsagesProvider"/>
+                                 implementationClass="com.phodal.datum.language.CharjFindUsagesProvider"/>
 
         <completion.contributor language="Charj"
-                                implementationClass="com.phodal.charj.completion.CharjCompletionContributor"/>
+                                implementationClass="com.phodal.datum.completion.CharjCompletionContributor"/>
         <lang.psiStructureViewFactory language="Charj"
-                                      implementationClass="com.phodal.charj.structure.CharjStructureViewFactory"/>
-        <lang.commenter language="Charj" implementationClass="com.phodal.charj.completion.CharjCommenter"/>
+                                      implementationClass="com.phodal.datum.structure.CharjStructureViewFactory"/>
+        <lang.commenter language="Charj" implementationClass="com.phodal.datum.completion.CharjCommenter"/>
     </extensions>
 </idea-plugin>
